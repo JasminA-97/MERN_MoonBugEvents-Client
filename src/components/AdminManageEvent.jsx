@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import AdminAddEvents from './AdminAddEvents';
 import AdminEditEvents from './AdminEditEvents';
 import AdminDeleteEvents from './AdminDeleteEvents';
+import { getAllEventsAPI } from '../Services/allAPI';
+import { addResponseContext } from '../contexts/ContextAPI';
 
 const AdminManageEvent = () => {
+  const {addresponse,setAddresponse} = useContext(addResponseContext)
+  const[allEvents,setAllevents] = useState([])
+
+  useEffect(()=>{
+    getAllEvents()
+  },[addresponse])
+
+  const getAllEvents = async()=>{
+    try{
+      const result = await getAllEventsAPI()
+      console.log(result);
+      if(result.status==200){
+        setAllevents(result.data)
+      }
+    }catch(err){
+      console.log(err);
+    }
+  }
 
   return (
     <>
@@ -23,23 +43,25 @@ const AdminManageEvent = () => {
               <th>Sl.No</th>
               <th>Event Name</th>
               <th>Event Cost</th>  
-              <th></th> 
-
+              <th>Event Description</th> 
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td> 
-              <td  className='d-flex'><AdminEditEvents/><AdminDeleteEvents/></td> 
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>  
-              <td className='d-flex'><AdminEditEvents/><AdminDeleteEvents/></td> 
-            </tr>          
+            {
+              allEvents?.length>0 ?
+                allEvents?.map(evnt=>(
+                  <tr key={evnt?._id}>
+                    <td></td>
+                    <td>{evnt.eventName}</td>
+                    <td>{evnt.eventCost}</td>
+                    <td>{evnt.eventDescription}</td> 
+                    <td  className='d-flex'><AdminEditEvents evnt={evnt}/><AdminDeleteEvents/></td> 
+                  </tr>  
+               ))
+              :
+               <div className="fw-bolder text-danger">No events added!</div>
+            }       
           </tbody>
         </Table>
       </div>

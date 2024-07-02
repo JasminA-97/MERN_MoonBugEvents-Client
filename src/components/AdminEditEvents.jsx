@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap';
 
-const AdminEditEvents = () => {
+const AdminEditEvents = ({evnt}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

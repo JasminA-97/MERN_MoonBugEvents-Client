@@ -26,7 +26,7 @@ const AdminDashboard = () => {
                       <i className="fa-solid fa-right-from-bracket pe-3"></i>Logout
                     </button>
                 </div>
-                <div style={{ height: '91vh',overflowY:'hidden'}} className="col"><Outlet/></div>
+                <div style={{ height: '91vh',overflowY:'scroll'}} className="col"><Outlet/></div>
             </div>
     </>
   )
