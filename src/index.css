@@ -1,0 +1,177 @@
+/* src/index.css */
+
+
+/* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.container {
+    margin-top: 80px;
+}
+
+.container .col-lg-4 {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    transition: transform 0.8s;
+    background: linear-gradient(to bottom, #000428, #004683);
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card .face {
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    backface-visibility: hidden;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+.card .face.front-face,
+.card .face.back-face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .face.front-face {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.card .face.back-face {
+    z-index: 1;
+    transform: rotateY(180deg);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.card .face.front-face .profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card .face.front-face .name {
+    letter-spacing: 2px;
+}
+
+.card .face.front-face .designation {
+    font-size: 0.8rem;
+    color: #ddd;
+    letter-spacing: 0.8px;
+}
+
+.card .face.back-face .fa-quote-left {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 1.2rem;
+}
+
+.card .face.back-face .fa-quote-right {
+    position: absolute;
+    bottom: 35px;
+    right: 25px;
+    font-size: 1.2rem;
+}
+
+@media(max-width: 991.5px) {
+    .col-lg-4 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+}
+
+.nova-round-regular {
+    font-family: "Nova Round", system-ui;
+    font-weight: bolder;
+}
+
+.links {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.bg-image {
+    background-image: url('/src/assets/Homebg1.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Adjust height as needed */
+    position: relative;
+}
+
+.navbar-transparent {
+    background-color: transparent !important;
+}
+
+.header-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for text readability */
+    padding: 20px 0;
+}
+.header-content h1,
+.header-content p {
+    color: rgba(215, 208, 208, 0.904); /* Semi-transparent black background for text readability */
+}
+
+
+
+/* src/components/LoginForm.css */
+
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
