@@ -17,3 +17,13 @@ export const getAllEventsAPI = async()=>{
     return await commonAPI("GET",`${SERVERURL}/events`,"")
 }
 
+export const editEventAPI = async(eid,reqBody)=>{
+    console.log('inside allapi=========',eid);
+    return await commonAPI("PUT",`${SERVERURL}/events/${eid}/edit`,reqBody)
+}
+
+export const deleteEventAPI = async(eid)=>{
+    return await commonAPI("DELETE",`${SERVERURL}/events/${eid}/delete`,{})
+}
+
+

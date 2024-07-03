@@ -2,17 +2,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import AdminAddEvents from './AdminAddEvents';
 import AdminEditEvents from './AdminEditEvents';
-import AdminDeleteEvents from './AdminDeleteEvents';
-import { getAllEventsAPI } from '../Services/allAPI';
-import { addResponseContext } from '../contexts/ContextAPI';
+import { deleteEventAPI, getAllEventsAPI } from '../Services/allAPI';
+import { addResponseContext, editResponseContext } from '../contexts/ContextAPI';
 
 const AdminManageEvent = () => {
+  const {editResponse,setEditResponse} = useContext(editResponseContext)
   const {addresponse,setAddresponse} = useContext(addResponseContext)
   const[allEvents,setAllevents] = useState([])
 
   useEffect(()=>{
     getAllEvents()
-  },[addresponse])
+  },[addresponse,editResponse])
 
   const getAllEvents = async()=>{
     try{
@@ -20,6 +20,19 @@ const AdminManageEvent = () => {
       console.log(result);
       if(result.status==200){
         setAllevents(result.data)
+      }
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const handleDeleteEvent = async(eid)=>{
+    try{
+      const result = await deleteEventAPI(eid)
+      if(result.status == 200){
+        getAllEvents()
+      }else{
+        console.log(result);
       }
     }catch(err){
       console.log(err);
@@ -50,13 +63,15 @@ const AdminManageEvent = () => {
           <tbody>
             {
               allEvents?.length>0 ?
-                allEvents?.map(evnt=>(
+                allEvents?.map((evnt,index)=>(
                   <tr key={evnt?._id}>
-                    <td></td>
-                    <td>{evnt.eventName}</td>
-                    <td>{evnt.eventCost}</td>
-                    <td>{evnt.eventDescription}</td> 
-                    <td  className='d-flex'><AdminEditEvents evnt={evnt}/><AdminDeleteEvents/></td> 
+                    <td>{index + 1}</td>
+                    <td>{evnt?.eventName}</td>
+                    <td>{evnt?.eventCost}</td>
+                    <td>{evnt?.eventDescription}</td> 
+                    <td  className='d-flex'><AdminEditEvents evnt={evnt}/>
+                    <button onClick={()=>handleDeleteEvent(evnt?._id)} className='btn'><i className="fa-solid fa-trash text-danger"></i></button>
+                    </td> 
                   </tr>  
                ))
               :

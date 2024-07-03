@@ -6,7 +6,6 @@ import { addResponseContext } from '../contexts/ContextAPI';
 const AdminAddEvents = () => {
   const {addresponse,setAddresponse} = useContext(addResponseContext)
   const[eventDetails,setEventDetails] = useState({eventName:"",eventCost:"",eventDescription:""})
-  console.log(eventDetails);
 
   const [show, setShow] = useState(false);
   const handleClose = () => {
@@ -17,7 +16,7 @@ const AdminAddEvents = () => {
 
   const handleAddEvent = async () => {
     const { eventName, eventCost, eventDescription } = eventDetails;
-    console.log('Event Details:', eventDetails); // Log eventDetails before sending
+    // console.log('Event Details:', eventDetails); 
   
     if (eventName && eventCost && eventDescription) {
       try {
