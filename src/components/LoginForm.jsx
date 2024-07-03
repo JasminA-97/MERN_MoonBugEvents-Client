@@ -48,9 +48,9 @@ const LoginForm = ({ toggleForm }) => {
   };
 
   return (
-    <div>
-      <h2 style={{color:'#004683'}} className="text-center mb-4">Login</h2>
-      <form>
+    <div className='w-75'>
+      <h2 style={{color:'#004683'}} className="w-100 text-center mb-4">Login</h2>
+      <form className='w-100'>
         <FloatingLabel controlId="floatingEmail" label="Email address" className="mb-3">
           <Form.Control  value={userData.email} onChange={e=>setUserData({...userData,email:e.target.value})} type="email" placeholder="name@example.com" required />
         </FloatingLabel>
@@ -58,16 +58,16 @@ const LoginForm = ({ toggleForm }) => {
           <Form.Control  value={userData.password} onChange={e=>setUserData({...userData,password:e.target.value})} type="password" placeholder="Password" required />
         </FloatingLabel>
         <button onClick={handleLogin} type="submit" className="btn btn-primary w-100">Login
-          {
-            isLoggedIn&&
-            <Spinner animation="grow" size="sm" />
-          }
         </button>
       </form>
       <div className="text-center mt-3">
         <span>New user? </span>
         <button className="btn btn-link" onClick={toggleForm}>Register here</button>
       </div>
+      {
+            isLoggedIn&&
+            <div className='text-center text-primart'>&nbsp;<Spinner animation="grow" size="sm" />&nbsp;<Spinner animation="grow" size="sm" />&nbsp;<Spinner animation="grow" size="sm" /></div>
+          }
     </div>
   );
 };

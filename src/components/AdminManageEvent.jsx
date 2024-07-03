@@ -69,7 +69,7 @@ const AdminManageEvent = () => {
                     <td>{evnt?.eventName}</td>
                     <td>{evnt?.eventCost}</td>
                     <td>{evnt?.eventDescription}</td> 
-                    <td  className='d-flex'><AdminEditEvents evnt={evnt}/>
+                    <td  className='d-flex justify-content-evenly align-items-center'><AdminEditEvents evnt={evnt}/>
                     <button onClick={()=>handleDeleteEvent(evnt?._id)} className='btn'><i className="fa-solid fa-trash text-danger"></i></button>
                     </td> 
                   </tr>  
