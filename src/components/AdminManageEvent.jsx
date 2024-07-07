@@ -6,17 +6,18 @@ import { deleteEventAPI, getAllEventsAPI } from '../Services/allAPI';
 import { addResponseContext, editResponseContext } from '../contexts/ContextAPI';
 
 const AdminManageEvent = () => {
+  const [searchKey,setSearchKey] = useState("")
   const {editResponse,setEditResponse} = useContext(editResponseContext)
   const {addresponse,setAddresponse} = useContext(addResponseContext)
   const[allEvents,setAllevents] = useState([])
 
   useEffect(()=>{
     getAllEvents()
-  },[addresponse,editResponse])
+  },[addresponse,editResponse,searchKey])
 
   const getAllEvents = async()=>{
     try{
-      const result = await getAllEventsAPI()
+      const result = await getAllEventsAPI(searchKey)
       console.log(result);
       if(result.status==200){
         setAllevents(result.data)
@@ -43,9 +44,10 @@ const AdminManageEvent = () => {
     <>
      <div className="d-flex justify-content-between align-items-center p-5">
         <div><AdminAddEvents/></div>
+        {/* search */}
         <div className='d-flex flex-wrap align-items-center bg-white rounded-4 p-1 border'> 
           <i className="fa-solid fa-magnifying-glass ps-2 pe-1"></i>
-          <input type="text" style={{width:'300px',border:'none'}} className='search rounded-4 fs-5 ps-2'/>
+          <input onChange={e=>setSearchKey(e.target.value)} type="text" style={{width:'300px',border:'none'}} className='search rounded-4 fs-5 ps-2'/>
         </div>
      </div>
 

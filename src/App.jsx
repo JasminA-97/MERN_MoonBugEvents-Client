@@ -42,7 +42,7 @@ function App() {
 
       <Route element={<UserDashboard/>} path='/userdashboard/*'>
         <Route element={<UserHome/>} path='userHome'/>
-        <Route element={<UserBookEvent/>}  path='userBookEvents'/>
+        <Route element={<UserBookEvent />} path="userBookEvents" />
         <Route element={<UserBookingHistory/>}  path='userBookingHistory'/>
         <Route element={<UserNotification/>} path='userNotifications'/>
         <Route element={<UserProfile/>} path='userProfile'/>

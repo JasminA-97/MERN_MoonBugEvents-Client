@@ -19,6 +19,7 @@ const AdminAddEvents = () => {
     // console.log('Event Details:', eventDetails); 
   
     if (eventName && eventCost && eventDescription) {
+      
       try {
         const result = await addEventAPI(eventDetails);
         if (result.status === 200) {
