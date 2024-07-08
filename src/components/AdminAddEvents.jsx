@@ -14,23 +14,33 @@ const AdminAddEvents = () => {
   }
   const handleShow = () => setShow(true);
 
-  const handleAddEvent = async () => {
+  const handleAddEvent = async (e) => {
+    e.preventDefault()
     const { eventName, eventCost, eventDescription } = eventDetails;
     // console.log('Event Details:', eventDetails); 
   
     if (eventName && eventCost && eventDescription) {
-      
-      try {
-        const result = await addEventAPI(eventDetails);
-        if (result.status === 200) {
-          setAddresponse(result.data)
-          handleClose();
-        } else {
-          alert(result.response.data);
-        }
-      } catch (err) {
-        console.log(err);
-      }
+      const reqBody = { eventName, eventCost, eventDescription };
+      const token = sessionStorage.getItem("token");
+      if (token) {
+        const reqHeader = {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        };
+          try {
+            const result = await addEventAPI(reqBody,reqHeader);
+            if (result.status === 200) {
+              setAddresponse(result.data)
+              handleClose();
+            } else {
+              alert(result.response.data);
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        }else {
+          alert('No token found. Please log in again.');
+        }  
     } else {
       alert('Please fill the form completely!');
     }

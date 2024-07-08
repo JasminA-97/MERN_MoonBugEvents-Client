@@ -1,46 +1,85 @@
-import React from 'react'
-import { Button, Table } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import {Dropdown, DropdownButton, Table } from 'react-bootstrap';
+import { editBookingStatusAPI,getAllBookingsAPI } from '../Services/allAPI';
 
 const AdminViewBookings = () => {
-  // Sample bookings
-  const bookings = [
-    { id: 1, user: 'John Doe', event: 'Wedding', date: '2024-06-01', status: 'Pending' },
-    { id: 2, user: 'Jane Smith', event: 'Birthday', date: '2024-06-15', status: 'Confirmed' },
-  ];
+  const [allbookings, setAllBookings] = useState([]);
+  console.log(allbookings);
+
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
+  const fetchBookings = async () => {
+    try {
+      const result = await getAllBookingsAPI();
+      setAllBookings(result.data);
+    } catch(err) {
+      console.log(err);
+    }
+  };
+
+  const handleStatusChange = async (bookingId, status) => {
+    try {
+      await editBookingStatusAPI(bookingId, {status})
+      fetchBookings(); // Refresh bookings list after update
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB'); // This will format the date as DD/MM/YYYY
+  }; 
 
   return (
-    <div className="p-5">
+<div className="p-5">
       <h2>View Bookings</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>User</th>
+            <th>SL.No</th>
             <th>Event</th>
-            <th>Date</th>
+            <th>Booking Date</th>
+            <th>Location</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone</th> 
+            <th>Requirements</th>
             <th>Status</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {bookings.map((booking) => (
-            <tr key={booking.id}>
-              <td>{booking.id}</td>
-              <td>{booking.user}</td>
-              <td>{booking.event}</td>
-              <td>{booking.date}</td>
-              <td>{booking.status}</td>
-              <td>
-                <Button variant="info" className="me-2">View</Button>
-                <Button variant="warning" className="me-2">Edit</Button>
-                <Button variant="danger">Delete</Button>
-              </td>
+          {
+            allbookings?.length>0 ?
+            allbookings.map((booking,index)=>(
+              <tr key={booking?._id}>
+                  <td>{index+1}</td>
+                  <td>{booking?.eventId.eventName}</td>
+                  <td>{formatDate(booking?.date)}</td>
+                  <td>{booking?.location}</td>
+                  <td>{booking?.userId.username}</td>
+                  <td>{booking?.userId.email}</td>
+                  <td>{booking?.userId.phone}</td>
+                  <td>{booking?.requirements}</td>
+
+                  <td>
+                    <DropdownButton  title={booking?.status}>
+                      <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Pending')}>Pending</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Confirmed')}> Confirmed</Dropdown.Item>
+                      <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Rejected')}>Rejected</Dropdown.Item>
+                    </DropdownButton>
+                  </td>
             </tr>
-          ))}
+            ))
+            :
+            <div className="text-danger fw-bolder">No Bookings Yet!</div>
+          }         
         </tbody>
       </Table>
     </div>
-  );
-};
+  )
+}
 
 export default AdminViewBookings
