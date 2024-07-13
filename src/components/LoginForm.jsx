@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FloatingLabel, Form, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { loginAPI } from '../Services/allAPI';
+import { tokenAuthContext } from '../contexts/AuthContext';
 
 const LoginForm = ({ toggleForm }) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  // Authentication
+  const {isAuthorised,setIsAuthorised} = useContext(tokenAuthContext)
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,6 +23,8 @@ const LoginForm = ({ toggleForm }) => {
           setIsLoggedIn(true);
           sessionStorage.setItem("user", JSON.stringify(result.data.user));
           sessionStorage.setItem("token", result.data.token);
+            // Authentication
+          setIsAuthorised(true)
 
           const userRole = result.data.user.role;
           console.log('userRole-------', userRole);

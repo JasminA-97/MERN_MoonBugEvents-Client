@@ -1,13 +1,9 @@
 import React from 'react'
 import NavHeader from '../components/NavHeader'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet} from 'react-router-dom'
+import Logout from '../components/Logout'
 
 const AdminDashboard = () => {
-  const navigate  = useNavigate()
-  const handleLogout=()=>{
-    sessionStorage.clear();
-    navigate('/')
-  }
 
   return (
     <>
@@ -22,9 +18,7 @@ const AdminDashboard = () => {
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'notifications'}><i className="fa-solid fa-comments pe-3"></i>Notifications</Link>
                     <hr />
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'profile'}><i className="fa-solid fa-user pe-3"></i>Profile</Link> 
-                    <button onClick={handleLogout} className='mb-4 text-light' style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', textDecoration: 'none', cursor: 'pointer' }}>
-                      <i className="fa-solid fa-right-from-bracket pe-3"></i>Logout
-                    </button>
+                    <Logout/>
                 </div>
                 <div style={{ height: '91vh',overflowY:'scroll'}} className="col"><Outlet/></div>
             </div>

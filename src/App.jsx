@@ -1,5 +1,5 @@
 
-import {Route, Routes } from 'react-router-dom'
+import {Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import Home from './pages/Home'
@@ -19,10 +19,12 @@ import UserBookEvent from './components/UserBookEvent'
 import UserBookingHistory from './components/UserBookingHistory'
 import UserNotification from './components/UserNotification'
 import UserProfile from './components/UserProfile'
-
+import { useContext } from 'react'
+import { tokenAuthContext } from './contexts/AuthContext'
+import Logout from './components/Logout'
 
 function App() {
-
+  const {isAuthorised,setIsAuthorised} = useContext(tokenAuthContext)
 
   return (
 <>
@@ -30,7 +32,9 @@ function App() {
       <Route element={<Home/>} path='/'/>
       <Route element={<CardContainer/>} path='/login'/>
       <Route element={<CardContainer/>} path='/register'/>
-      <Route element={<AdminDashboard/>} path='/admindashboard/*'>
+      <Route element={<Logout/>} path='/logout'/>
+
+      <Route element={isAuthorised?<AdminDashboard/>:<Navigate to={'/login'}/>} path='/admindashboard/*'>
       <Route element={<AdminHome/>} path='adminhome'/>
         <Route element={<AdminManageEvent/>} path='manage'/>
         <Route element={<AdminViewBookings/>} path='bookings'/>
@@ -40,7 +44,7 @@ function App() {
         <Route element={<AdminProfile/>} path='profile'/>
       </Route>
 
-      <Route element={<UserDashboard/>} path='/userdashboard/*'>
+      <Route element={isAuthorised?<UserDashboard/>:<Navigate to={'/login'}/>} path='/userdashboard/*'>
         <Route element={<UserHome/>} path='userHome'/>
         <Route element={<UserBookEvent />} path="userBookEvents" />
         <Route element={<UserBookingHistory/>}  path='userBookingHistory'/>
