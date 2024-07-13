@@ -27,9 +27,9 @@ export const deleteEventAPI = async(eid)=>{
     return await commonAPI("DELETE",`${SERVERURL}/events/${eid}/delete`,{})
 }
 
-// Get all events
-export const getFullEventsAPI = async () => {
-    return await commonAPI("GET",`${SERVERURL}/all-events`, "");
+// Get full events
+export const getFullEventsAPI = async (reqHeader) => {
+    return await commonAPI("GET",`${SERVERURL}/all-events`,"",reqHeader);
 };
 
 // Book an event
@@ -50,6 +50,16 @@ export const editBookingStatusAPI = async (bookingId,status) => {
 //get booking history of a single user who is logged-in
 export const getUserBookingAPI = async (reqHeader) => {
     return await commonAPI("GET",`${SERVERURL}/user-bookings`,"",reqHeader);
+};
+
+//user edit his booking
+export const userEditBookingAPI = async (bookingId, reqBody, reqHeader) => {
+    return await commonAPI("PUT", `${SERVERURL}/user-bookings/${bookingId}/edit`, reqBody, reqHeader);
+};
+
+//user delete his booking
+export const userDeleteBookingAPI = async (bookingId,reqHeader) => {
+    return await commonAPI("DELETE", `${SERVERURL}/user-bookings/${bookingId}/delete`, {}, reqHeader);
 };
 
 

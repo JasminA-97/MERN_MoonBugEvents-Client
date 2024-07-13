@@ -18,23 +18,28 @@ const UserBookEvent = () => {
       setUserInfo(user);
       console.log(user);
     }
-  }, []);
 
-  useEffect(() => {
-    handleFetchEvents();
-  }, []);
+    handleFetchEvents(); // Move this call inside useEffect
+  }, []); // Empty dependency array means it runs once when component mounts
 
   const handleFetchEvents = async () => {
-    try {
-      const result = await getFullEventsAPI();
-      console.log(result);
-      if (result.status === 200) {
-        setAllEvents(result.data);
-      } else {
-        alert('Failed to fetch Events. Please try again!!!');
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      const reqHeader = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      };
+      try {
+        const result = await getFullEventsAPI(reqHeader);
+        console.log(result);
+        if (result.status === 200) {
+          setAllEvents(result.data);
+        } else {
+          alert('Failed to fetch Events. Please try again!!!');
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -55,7 +60,7 @@ const UserBookEvent = () => {
           console.log('bookevent------', result);
           if (result.status === 200) {
             alert('Event booked successfully!');
-            setFormData({ eventId: '',date: '',location: '',requirements: '',})
+            setFormData({ eventId: '', date: '', location: '', requirements: '' });
           } else {
             alert(result.response.data);
           }
