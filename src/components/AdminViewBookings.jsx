@@ -65,7 +65,7 @@ const AdminViewBookings = () => {
                   <td>{booking?.requirements}</td>
 
                   <td>
-                    <DropdownButton  title={booking?.status}>
+                    <DropdownButton title={booking?.status}>
                       <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Pending')}>Pending</Dropdown.Item>
                       <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Confirmed')}> Confirmed</Dropdown.Item>
                       <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Rejected')}>Rejected</Dropdown.Item>

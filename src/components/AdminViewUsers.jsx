@@ -1,12 +1,33 @@
-import React from 'react'
-import { Button, Table } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import {Table } from 'react-bootstrap';
+import { usersWithBookingsAPI } from '../Services/allAPI';
 
 const AdminViewUsers = () => {
-  // Sample users
-  const users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'User' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Admin' },
-  ];
+  const [viewUsers,setViewUsers] = useState([])
+  console.log(viewUsers);
+
+  useEffect(()=>{
+    fetchUsersWithBookings()
+  },[])
+
+  const fetchUsersWithBookings = async () => {
+    const token = sessionStorage.getItem("token")
+    if(token){
+      const reqHeader = {
+        "Content-Type":"application/json",
+        "Authorization": `Bearer ${token}`
+      }
+      try{    
+        const result = await usersWithBookingsAPI(reqHeader)  
+        if(result.status == 200){
+          setViewUsers(result.data)
+        } 
+      }catch(err){
+        console.log(err);
+      }
+    }
+  };
+
 
   return (
     <div className="p-5">
@@ -14,26 +35,28 @@ const AdminViewUsers = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>SL.No</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
+            <th>Phone</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                <Button variant="warning" className="me-2">Edit</Button>
-                <Button variant="danger">Delete</Button>
-              </td>
+
+          {
+            viewUsers?.length>0?
+            viewUsers?.map((usersWB,index)=>(
+              <tr key={usersWB?._id}>
+              <td>{index+1}</td>
+              <td>{usersWB?.name}</td>
+              <td>{usersWB?.email}</td>
+              <td>{usersWB?.phone}</td>
             </tr>
-          ))}
+            ))
+            :
+            <div className="fw-bolder text-danger">No users yet!</div>
+          }     
+
         </tbody>
       </Table>
     </div>
