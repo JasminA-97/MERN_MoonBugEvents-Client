@@ -15,7 +15,6 @@ const AdminDashboard = () => {
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'bookings'}><i className="fa-solid fa-bookmark pe-3"></i>View Bookings</Link>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'history'}><i className="fa-solid fa-clock-rotate-left pe-3"></i>Booking History</Link>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'viewusers'}><i class="fa-solid fa-users pe-3"></i>View users</Link>
-                    <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'notifications'}><i className="fa-solid fa-comments pe-3"></i>Notifications</Link>
                     <hr />
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'profile'}><i className="fa-solid fa-user pe-3"></i>Profile</Link> 
                     <Logout/>

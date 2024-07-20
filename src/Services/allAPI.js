@@ -65,7 +65,11 @@ export const userDeleteBookingAPI = async (bookingId,reqHeader) => {
 // Get users who have made bookings for adminViewBooking
 export const usersWithBookingsAPI = async (reqHeader) => {
     return await commonAPI("GET", `${SERVERURL}/users-with-bookings`, "", reqHeader);
+}
 
+//edit user profile
+export const editUserAPI = async (reqBody,reqHeader) => {
+    return await commonAPI("PUT",`${SERVERURL}/user/edit`,reqBody,reqHeader);
 };
 
 
