@@ -100,7 +100,7 @@ const UserProfile = () => {
               />
             </FloatingLabel>
             <div className='d-flex justify-content-evenly align-items-center'>
-              <Button className='btn' type="submit">Update Profile</Button>
+              <Button className='btn' type="submit">Update</Button>
               <Button className='btn btn-secondary' type="button" onClick={handleCancel}>Cancel</Button>
             </div>
           </form>
