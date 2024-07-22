@@ -14,6 +14,7 @@ const UserDashboard = () => {
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userHome'}><i className="fa-solid fa-house pe-3"></i>Home</Link>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userBookEvents'}><i className="fa-solid fa-bars-progress pe-3"></i>Book Events</Link>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userBookingHistory'}><i className="fa-solid fa-clock-rotate-left pe-3"></i>Booking History</Link>
+                    <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userAddReview'}><i className="fa-solid fa-pen pe-3"></i>Add Review</Link>
                     <hr />
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userProfile'}><i className="fa-solid fa-user pe-3"></i>Profile</Link> 
                     <Logout/>                

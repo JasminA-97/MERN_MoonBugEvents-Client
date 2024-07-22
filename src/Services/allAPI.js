@@ -27,9 +27,14 @@ export const deleteEventAPI = async(eid)=>{
     return await commonAPI("DELETE",`${SERVERURL}/events/${eid}/delete`,{})
 }
 
-// Get full events
+// Get full events for each user
 export const getFullEventsAPI = async (reqHeader) => {
     return await commonAPI("GET",`${SERVERURL}/all-events`,"",reqHeader);
+};
+
+// Get homeEvents for home page
+export const gethomeEventsAPI = async () => {
+    return await commonAPI("GET",`${SERVERURL}/all-event`,"",);
 };
 
 // Book an event
@@ -72,4 +77,13 @@ export const editUserAPI = async (reqBody,reqHeader) => {
     return await commonAPI("PUT",`${SERVERURL}/user/edit`,reqBody,reqHeader);
 };
 
+//add review
+export const addReviewAPI = async(reqBody,reqHeader)=>{
+    return await commonAPI("POST",`${SERVERURL}/review/add`,reqBody,reqHeader)
+}
+
+// Get homeReviews for home page
+export const gethomeReviewsAPI = async () => {
+    return await commonAPI("GET",`${SERVERURL}/all-reviews`,"",);
+}
 
