@@ -4,6 +4,8 @@ import AdminAddEvents from './AdminAddEvents';
 import AdminEditEvents from './AdminEditEvents';
 import { deleteEventAPI, getAllEventsAPI } from '../Services/allAPI';
 import { addResponseContext, editResponseContext } from '../contexts/ContextAPI';
+import SERVERURL from '../Services/serverurl';
+
 
 const AdminManageEvent = () => {
   const [searchKey,setSearchKey] = useState("")
@@ -56,6 +58,7 @@ const AdminManageEvent = () => {
           <thead>
             <tr>
               <th>Sl.No</th>
+              <th>Image</th>
               <th>Event Name</th>
               <th>Event Cost</th>  
               <th>Event Description</th> 
@@ -68,9 +71,14 @@ const AdminManageEvent = () => {
                 allEvents?.map((evnt,index)=>(
                   <tr key={evnt?._id}>
                     <td>{index + 1}</td>
+                    <td><img style={{width:'50px',height:'50px'}}
+                    src={evnt?.eventImg? `${SERVERURL}/uploads/${evnt.eventImg}` : ""}
+                    alt=""
+                    className="profile"/>
+                    </td>
                     <td>{evnt?.eventName}</td>
                     <td>{evnt?.eventCost}</td>
-                    <td>{evnt?.eventDescription}</td> 
+                    <td>{evnt?.eventDescription.slice(0,30)}...</td> 
                     <td  className='d-flex justify-content-evenly align-items-center'><AdminEditEvents evnt={evnt}/>
                     <button onClick={()=>handleDeleteEvent(evnt?._id)} className='btn'><i className="fa-solid fa-trash text-danger"></i></button>
                     </td> 

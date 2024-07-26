@@ -49,7 +49,7 @@ const RegisterForm = ({ toggleForm }) => {
         <FloatingLabel controlId="floatingInputPhone" label="Phone Number" className='mb-3'>
           <Form.Control  value={userData.phone} onChange={e=>setUserData({...userData,phone:e.target.value})} type="text" placeholder="Phone Number" required />
         </FloatingLabel>
-        <button onClick={handleRegister} type="submit" className="btn btn-primary">Register</button>
+        <button onClick={handleRegister} type="submit" className="btn btn-primary w-100">Register</button>
       </form>
       <div className="text-center mt-3">
         <span>Already have an account? </span>

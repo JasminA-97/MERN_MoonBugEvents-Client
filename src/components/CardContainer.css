@@ -1,6 +1,6 @@
 /* src/components/CardContainer.css */
 
-.card-container {
+ .card-container {
     position: relative;
     width: 400px;
     height: 450px;
@@ -10,7 +10,7 @@
     
   }
   
-  .card-face {
+.card-face {
     position: absolute;
     width: 100%;
     height: 100%;

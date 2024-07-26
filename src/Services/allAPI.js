@@ -18,9 +18,9 @@ export const getAllEventsAPI = async(searchKey)=>{
     return await commonAPI("GET",`${SERVERURL}/events?search=${searchKey}`,"")
 }
 
-export const editEventAPI = async(eid,reqBody)=>{
+export const editEventAPI = async(eid,reqBody,reqHeader)=>{
     console.log('inside allapi edit, eventid=========',eid);
-    return await commonAPI("PUT",`${SERVERURL}/events/${eid}/edit`,reqBody)
+    return await commonAPI("PUT",`${SERVERURL}/events/${eid}/edit`,reqBody,reqHeader)
 }
 
 export const deleteEventAPI = async(eid)=>{

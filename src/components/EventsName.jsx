@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { gethomeEventsAPI } from '../Services/allAPI';
+import SERVERURL from '../Services/serverurl';
 
 const EventsName = () => {
   const [homeEvents, setHomeEvents] = useState([]);
@@ -19,49 +20,28 @@ const EventsName = () => {
       console.log(err);
     }
   };
-
-  const colors = [
-    '#dda0dd',
-    '#9ac1e3',
-    '#e3bc9a',
-    '	#d2adad',
-    '#D0C4AB',
-    '#9ae3bc',
-    '#D8BFD8',
-    '#ffc0cb',  
-    '#dcae96'
-  ];
-
-  const boxStyle = {
-    width: '200px',  
-    height: '200px', 
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '10px',
-    borderRadius: '8px', 
-  };
-
-  const getColSize = (index) => {
-    // Calculate the column size
-    const colsInRow = 4;
-    return homeEvents.length % colsInRow === 1 && index === homeEvents.length - 1 ? 12 : 3;
-  };
-
   return (
-    <div className="py-5">
-      <Container className="text-center text-white fw-bolder">
-        <Row className="justify-content-center">
+    <div className="pt-3 pb-3">
+      <Container className="text-center fw-bolder">
+        <h1 style={{fontFamily: "Dancing Script, cursive"}} className='mb-5'>Services</h1>
+        <Row className="row justify-content-center">
           {homeEvents?.length > 0 ? (
             homeEvents?.map((homeEvent, index) => (
-              <Col key={homeEvent?._id} md={getColSize(index)} className="d-flex justify-content-center">
-                <div
-                  style={{
-                    ...boxStyle,
-                    backgroundColor: colors[index % colors.length],
-                  }}
-                >
-                  <span>{homeEvent?.eventName}</span>
+              <Col key={homeEvent?._id} className="d-flex justify-content-center">
+                <div className='Eventname mt-5 mb-5'>
+                  <Card style={{ width: '300px', height:'500px'}}>
+                  <Card.Img className='w-100' style={{ height:'300px'}} variant="top" src={`${SERVERURL}/uploads/${homeEvent?.eventImg}`} />
+                  <Card.Body>
+                    <Card.Title>{homeEvent?.eventName}</Card.Title>
+                    <Card.Text>
+                    {homeEvent?.eventDescription.slice(0,50)}...
+                    </Card.Text>
+                  </Card.Body>
+                  
+                  <Card.Body>
+                    <button className='btn btn-primary'>Book Now</button>
+                  </Card.Body>
+                </Card>
                 </div>
               </Col>
             ))

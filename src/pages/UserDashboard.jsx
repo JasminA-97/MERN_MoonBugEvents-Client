@@ -2,8 +2,6 @@ import React from 'react'
 import NavHeader from '../components/NavHeader'
 import { Link, Outlet } from 'react-router-dom'
 
-import Logout from '../components/Logout'
-
 const UserDashboard = () => {
 
   return (
@@ -17,7 +15,7 @@ const UserDashboard = () => {
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userAddReview'}><i className="fa-solid fa-pen pe-3"></i>Add Review</Link>
                     <hr />
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userProfile'}><i className="fa-solid fa-user pe-3"></i>Profile</Link> 
-                    <Logout/>                
+                                   
                  </div>
                 <div style={{ height: '91vh',overflowY:'hidden'}} className="col"><Outlet/></div>
             </div>

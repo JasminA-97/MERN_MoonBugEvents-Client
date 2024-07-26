@@ -1,45 +1,71 @@
 import React, { useEffect, useState } from 'react';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import { editUserAPI } from '../Services/allAPI';
+import profileImg from '../assets/profileImg.jpg';
+import SERVERURL from '../Services/serverurl';
 
 const UserProfile = () => {
   const [profile, setProfile] = useState({
-    username: "", email: "", password: "", phone: ""
+    username: "", email: "", password: "", phone: "", profilePic: ""
   });
+  const [existingImg, setExistingImg] = useState("");
+  const [preview, setPreview] = useState("");
 
   useEffect(() => {
     if (sessionStorage.getItem("user")) {
       const existingProfile = JSON.parse(sessionStorage.getItem("user"));
       setProfile({
+        ...profile,
         username: existingProfile.username,
         email: existingProfile.email,
         password: existingProfile.password,
         phone: existingProfile.phone
       });
+      setExistingImg(existingProfile.profilePic || "");
     }
   }, []);
 
-  const handleUpdateProfile = async (event) => {
-    event.preventDefault(); // Prevent form submission if there are validation errors
+  useEffect(() => {
+    if (profile.profilePic) {
+      setPreview(URL.createObjectURL(profile.profilePic));
+    } else {
+      setPreview("");
+    }
+  }, [profile.profilePic]);
 
-    const { username, email, password, phone } = profile;
-    const reqBody = { username, email, password, phone };
-    const token = sessionStorage.getItem("token");
+  const handleUpdateProfile = async (e) => {
+     e.preventDefault();
 
-    if (token) {
-      const reqHeader = {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      };
-      try {
-        const result = await editUserAPI(reqBody, reqHeader);
-        if (result.status === 200) {
-          sessionStorage.setItem("user", JSON.stringify(result.data));
-          alert("Profile updated successfully!");
+    const { username, email, password, phone, profilePic } = profile;
+    if (username && email && password && phone) {
+      const reqBody = new FormData();
+      reqBody.append("username", username);
+      reqBody.append("email", email);
+      reqBody.append("password", password);
+      reqBody.append("phone", phone);
+      preview?reqBody.append("profilePic",profilePic):reqBody.append("profilePic",existingImg)
+    
+      const token = sessionStorage.getItem("token");
+
+      if (token) {
+        const reqHeader ={
+          "Content-Type": preview?"multipart/form-data" :"application/json",
+          "Authorization":`Bearer ${token}`
         }
-      } catch (err) {
-        console.log(err);
+        try {
+          const result = await editUserAPI(reqBody, reqHeader);
+          if (result.status === 200) {
+            sessionStorage.setItem("user", JSON.stringify(result.data));
+            alert("Profile updated successfully!");
+          }else{
+            console.log(result);
+          }
+        } catch (err) {
+          console.log(err);
+        }
       }
+    }else{
+      alert('Please fill the form completely!')
     }
   };
 
@@ -52,15 +78,29 @@ const UserProfile = () => {
         password: existingProfile.password,
         phone: existingProfile.phone
       });
+      setExistingImg(existingProfile.profilePic || "");
     }
   };
 
   return (
     <>
-      <h2 className='text-center p-5'>Profile</h2>
+      <h2 className='text-center p-3'>Update Profile</h2>
       <div className="w-100">
         <div className='d-flex justify-content-center align-items-center w-100'>
           <form className='w-50' onSubmit={handleUpdateProfile}>
+          <label className='d-flex justify-content-center mb-2'>
+         
+            <input type="file" style={{display:'none'}} onChange={e=>setProfile({...profile,profilePic:e.target.files[0]})}/>
+
+            {
+              existingImg==""?
+              <img width={'200px'} height={'180px'} className='rounded-circle' src={preview?preview:profileImg} alt="" />
+              :
+              <img width={'200px'} height={'180px'} className='rounded-circle' src={preview ? preview : existingImg ? `${SERVERURL}/uploads/${existingImg}` : profileImg} alt="" />
+
+            }
+
+          </label>
             <FloatingLabel controlId="floatingName" label="Name" className="mb-3">
               <Form.Control
                 type="text"
