@@ -5,9 +5,8 @@ import { FaStar } from 'react-icons/fa';
 import SERVERURL from '../Services/serverurl';
 import dummyImg from '../assets/dummy.png'
 
-
-const ProfileCards = () => {
-  const [homeReviews, setHomeReviews] = useState([]);
+const Testimonials = () => {
+    const [homeReviews, setHomeReviews] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
@@ -40,16 +39,15 @@ const ProfileCards = () => {
   };
 
   return (
-
-   <>
-      <h1 className='"mt-5 pt-5 text-center'>Testimonials</h1>
-      <div className="container d-flex align-items-center justify-content-center pb-5">
+    <>
+<h1 style={{fontFamily: "Dancing Script, cursive"}} className='pt-5 mt-5 fw-bolder text-center'>Testimonials</h1>   
+   <div className="container d-flex align-items-center justify-content-center">
         <i className="fa-solid fa-caret-left" onClick={handlePrev} style={{ cursor: 'pointer', fontSize: '2rem', marginRight: '6rem' }}></i>
   
         <Row className="d-flex justify-content-evenly testim">
           {homeReviews.slice(startIndex, startIndex + 3).map((review) => (
             <div key={review?._id} className="col-lg-4 pe-5">
-              <div className="card" style={{ height: '20rem' }}>
+              <div className="card" style={{ height: '22rem' }}>
                 <div className="face front-face">
                   <img
                     src={review?.userId?.profilePic ? `${SERVERURL}/uploads/${review.userId.profilePic}` : dummyImg}
@@ -76,7 +74,17 @@ const ProfileCards = () => {
         <i className="fa-solid fa-caret-right" onClick={handleNext} style={{ cursor: 'pointer', fontSize: '2rem', marginLeft: '6rem' }}></i>
       </div>
    </>
-  );
-};
+  )
+}
 
-export default ProfileCards;
+export default Testimonials
+
+
+
+
+  
+
+
+   
+
+

@@ -1,16 +1,21 @@
 import React from 'react'
 import Header from '../components/Header'
-import ProfileCards from '../components/ProfileCards'
 import Footer from '../components/Footer'
-import EventsName from '../components/EventsName'
+import Contact from '../components/Contact'
+import Videos from '../components/Videos'
+import Testimonials from '../components/Testimonials'
+import Services from '../components/Services'
+
 
 
 const Home = () => {
   return (
     <div>
         <Header/>
-        <EventsName/>
-        <ProfileCards/>
+        <Services/>
+        <Videos/>
+        <Testimonials/>
+        <Contact/>
         <Footer/>
     </div>
   )
