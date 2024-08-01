@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import { gethomeEventsAPI } from '../Services/allAPI';
 import SERVERURL from '../Services/serverurl';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [homeEvents, setHomeEvents] = useState([]);
@@ -28,20 +29,25 @@ const Services = () => {
         <Row className="row justify-content-center ms-5 me-5">
         {
           homeEvents?.length > 0 ? (
-            homeEvents?.map((homeEvent, index) => (
+            homeEvents?.map((homeEvent) => (
               <Col key={homeEvent?._id} className="d-flex justify-content-center text-center">
                 <div>
-                  <Card className='mt-5' style={{ width: '300px', height:'480px',border:'none'}}>
-                  <Card.Img className='w-100 border rounded-4' style={{ height:'300px'}} variant="top" src={`${SERVERURL}/uploads/${homeEvent?.eventImg}`} />
-                  <Card.Body>
-                    <Card.Title className=' fw-bold'>{homeEvent?.eventName}</Card.Title>
-                    <Card.Text>
-                      {homeEvent?.eventDescription.slice(0,55)}...
-                    </Card.Text>
-                  </Card.Body>
-                  <Card.Body>
-                    <button className='btn btn-info rounded-5 ps-4 pe-4'>Enquire Now</button>
-                  </Card.Body>
+                  <Card className='eventCard mt-5  rounded-4' style={{ width: '300px', height:'480px',border:'none'}}>
+                    <Link to={`singleEvent/${homeEvent._id}`}  style={{textDecoration:'none'}} >
+                      <Card.Img className='w-100 border rounded-4' style={{ height:'300px'}} variant="top" src={`${SERVERURL}/uploads/${homeEvent?.eventImg}`} />
+                      <div className="card-overlay">
+                          <h2>{homeEvent?.eventName}</h2>
+                      </div>
+                    </Link>
+                    <Card.Body>
+                      <Card.Title className=' fw-bold'>{homeEvent?.eventName}</Card.Title>
+                      <Card.Text>
+                        {homeEvent?.eventDescription.slice(0,55)}...
+                      </Card.Text>
+                    </Card.Body>
+                    <Card.Body>
+                    <Link to={`/singleEvent/${homeEvent._id}`}  style={{textDecoration:'none'}} className='btn btn-info rounded-5 ps-4 pe-4'>Enquire Now</Link>
+                    </Card.Body>
                 </Card>
                 </div>
               </Col>

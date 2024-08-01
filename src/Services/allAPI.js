@@ -34,7 +34,7 @@ export const getFullEventsAPI = async (reqHeader) => {
 
 // Get homeEvents for home page
 export const gethomeEventsAPI = async () => {
-    return await commonAPI("GET",`${SERVERURL}/all-event`,"",);
+    return await commonAPI("GET",`${SERVERURL}/all-event`,"");
 };
 
 // Book an event
@@ -84,6 +84,10 @@ export const addReviewAPI = async(reqBody,reqHeader)=>{
 
 // Get homeReviews for home page
 export const gethomeReviewsAPI = async () => {
-    return await commonAPI("GET",`${SERVERURL}/all-reviews`,"",);
+    return await commonAPI("GET",`${SERVERURL}/all-reviews`,"");
 }
 
+//Get single event by id
+export const getEventByIdAPI  = async (eid) => {
+    return await commonAPI("GET",`${SERVERURL}/all-events/${eid}`,"");
+}

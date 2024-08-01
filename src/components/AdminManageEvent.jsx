@@ -43,7 +43,7 @@ const AdminManageEvent = () => {
   }
 
   return (
-    <>
+    <div className=' bg-light'>
      <div className="d-flex justify-content-between align-items-center p-5">
         <div><AdminAddEvents/></div>
         {/* search */}
@@ -54,15 +54,15 @@ const AdminManageEvent = () => {
      </div>
 
       <div className='d-flex justify-content-center align-items-center'>
-        <Table striped bordered hover variant="primary" className='w-75'>
+        <Table hover className='w-75'>
           <thead>
-            <tr>
-              <th>Sl.No</th>
-              <th>Image</th>
-              <th>Event Name</th>
-              <th>Event Cost</th>  
-              <th>Event Description</th> 
-              <th></th>
+            <tr >
+              <th className='p-3'>Sl.No</th>
+              <th className='p-3'>Image</th>
+              <th className='p-3'>Event Name</th>
+              <th className='p-3'>Event Cost</th>  
+              <th className='p-3'>Event Description</th> 
+              <th className='p-3'></th>
             </tr>
           </thead>
           <tbody>
@@ -70,7 +70,7 @@ const AdminManageEvent = () => {
               allEvents?.length>0 ?
                 allEvents?.map((evnt,index)=>(
                   <tr key={evnt?._id}>
-                    <td>{index + 1}</td>
+                    <td >{index + 1}</td>
                     <td><img style={{width:'50px',height:'50px'}}
                     src={evnt?.eventImg? `${SERVERURL}/uploads/${evnt.eventImg}` : ""}
                     alt=""
@@ -79,7 +79,7 @@ const AdminManageEvent = () => {
                     <td>{evnt?.eventName}</td>
                     <td>{evnt?.eventCost}</td>
                     <td>{evnt?.eventDescription.slice(0,30)}...</td> 
-                    <td  className='d-flex justify-content-evenly align-items-center'><AdminEditEvents evnt={evnt}/>
+                    <td  className='justify-content-evenly align-items-center'><AdminEditEvents evnt={evnt}/>
                     <button onClick={()=>handleDeleteEvent(evnt?._id)} className='btn'><i className="fa-solid fa-trash text-danger"></i></button>
                     </td> 
                   </tr>  
@@ -91,7 +91,7 @@ const AdminManageEvent = () => {
         </Table>
       </div>
 
-    </>
+    </div>
   )
 }
 

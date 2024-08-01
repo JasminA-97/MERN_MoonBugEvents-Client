@@ -30,9 +30,9 @@ const Footer = () => {
           </div>
           <div className="col-lg-3 mb-2">
             <h4 className='text-white'>Contact Us</h4>
-            <p>123 Event Avenue, City, State, 12345</p>
-            <p>Email: info@moonbugevents.com</p>
-            <p>Phone: (123) 456-7890</p>
+            <p>395W+R4W, Pukkattupady, Kerala 683561</p>
+            <p>Email: hajis4u2mail@gmail.com</p>
+            <p>Phone: 9946124710</p>
           </div>
         </div>
         <hr className="bg-white" />

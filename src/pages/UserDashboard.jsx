@@ -17,7 +17,7 @@ const UserDashboard = () => {
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userProfile'}><i className="fa-solid fa-user pe-3"></i>Profile</Link> 
                                    
                  </div>
-                <div style={{ height: '91vh',overflowY:'hidden'}} className="col"><Outlet/></div>
+                <div style={{ height: '91vh',overflowY:'hidden'}} className="col p-0"><Outlet/></div>
             </div>
     </>
   )

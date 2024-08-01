@@ -1,6 +1,50 @@
+/* inside admin dashboard */
 .search:focus{
     outline: none;
     border: none;
   }
+
+  /*card containing event details in homepage  */
+  .eventCard {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  .eventCard img {
+    transition: transform 0.3s ease;
+  }
+  
+  .eventCard:hover img {
+    transform: scale(1.1);
+  }
+  
+  .eventCard .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 315px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .eventCard:hover .card-overlay {
+    opacity: 1;
+  }
+  
+  .eventCard .card-overlay h2{
+    color: #fff;
+    text-align: center;
+    font-family: "Sail";
+    background-color: orange;
+    background: 100%;
+  } 
+
+
 
   

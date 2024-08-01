@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const UserHome = () => {
   const [userName,setUserName]=useState("")
+  const navigate = useNavigate()
 
   useEffect(()=>{
     if(sessionStorage.getItem('user')){
@@ -12,6 +14,10 @@ const UserHome = () => {
     }
   },[])
 
+  const handleNavigate = ()=>{
+    navigate('/userdashboard/userBookEvents')
+  }
+
   return (
     <>
       <h1 className='m-5'>Hey&nbsp;<span className='text-primary'>{userName},</span></h1>
@@ -19,6 +25,7 @@ const UserHome = () => {
           <h2>Welcome to MoonBug Events!</h2>
           <h4 className='pt-2'>Book Your Event</h4>
           <p className='pt-2'>We are delighted to help you plan and manage your special events <p>Explore our services and book your event with us today!</p></p>
+          <button onClick={handleNavigate} className="btn btn-info rounded-5">Book Now</button>
       </div>
     </>
   )

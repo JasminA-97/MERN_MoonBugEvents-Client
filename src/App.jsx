@@ -8,7 +8,6 @@ import CardContainer from './components/CardContainer'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminManageEvent from './components/AdminManageEvent'
 import AdminViewBookings from './components/AdminViewBookings'
-import AdminBookingHistory from './components/AdminBookingHistory'
 import AdminProfile from './components/AdminProfile'
 import AdminViewUsers from './components/AdminViewUsers'
 import AdminHome from './components/AdminHome'
@@ -21,6 +20,7 @@ import { useContext } from 'react'
 import { tokenAuthContext } from './contexts/AuthContext'
 import Logout from './components/Logout'
 import UserAddReview from './components/UserAddReview'
+import SingleEvent from './components/SingleEvent'
 
 function App() {
   const {isAuthorised,setIsAuthorised} = useContext(tokenAuthContext)
@@ -32,12 +32,12 @@ function App() {
       <Route element={<CardContainer/>} path='/login'/>
       <Route element={<CardContainer/>} path='/register'/>
       <Route element={<Logout/>} path='/logout'/>
+      <Route element={<SingleEvent/>} path ='/singleEvent/:eid'/>
 
       <Route element={isAuthorised?<AdminDashboard/>:<Navigate to={'/login'}/>} path='/admindashboard/*'>
       <Route element={<AdminHome/>} path='adminhome'/>
         <Route element={<AdminManageEvent/>} path='manage'/>
         <Route element={<AdminViewBookings/>} path='bookings'/>
-        <Route element={<AdminBookingHistory/>} path='history'/>
         <Route element={<AdminViewUsers/>} path='viewusers'/>
         <Route element={<AdminProfile/>} path='profile'/>
       </Route>

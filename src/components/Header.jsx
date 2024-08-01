@@ -1,12 +1,12 @@
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import NavHeader from './NavHeader'
 
 const Header = () => {
   return (
     <div>
         <header className="bg-image">
-         
             <div className='header-content' >
                 <div style={{height:'100%'}}  className="d-flex flex-column justify-content-center align-items-center w-100 " >
                     <h4>Your one-stop solution for event decoration.</h4>

@@ -19,8 +19,8 @@ const UserBookEvent = () => {
       console.log(user);
     }
 
-    handleFetchEvents(); // Move this call inside useEffect
-  }, []); // Empty dependency array means it runs once when component mounts
+    handleFetchEvents(); 
+  }, []); 
 
   const handleFetchEvents = async () => {
     const token = sessionStorage.getItem('token');

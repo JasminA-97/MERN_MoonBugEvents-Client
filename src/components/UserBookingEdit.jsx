@@ -1,38 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap';
 import { userEditBookingAPI } from '../Services/allAPI';
 
 const UserBookingEdit = ({ booking, allEvents, fetchUserBookings }) => {
   const [formData, setFormData] = useState({
-    bookingId: booking?._id,
-    eventId: booking?.eventId._id,
-    date: booking?.date,
-    location: booking?.location,
-    requirements: booking?.requirements
+    bookingId: booking?._id || '',
+    eventId: booking?.eventId?._id || '',
+    date: booking?.date || '',
+    location: booking?.location || '',
+    requirements: booking?.requirements || ''
   });
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (booking) {
+      setFormData({
+        bookingId: booking?._id || '',
+        eventId: booking?.eventId?._id || '',
+        date: booking?.date || '',
+        location: booking?.location || '',
+        requirements: booking?.requirements || ''
+      });
+    }
+  }, [booking]);
 
   const handleClose = () => {
     setShow(false);
     setFormData({
-      bookingId: booking?._id,
-      eventId: booking?.eventId._id,
-      date: booking?.date,
-      location: booking?.location,
-      requirements: booking?.requirements
+      bookingId: booking?._id || '',
+      eventId: booking?.eventId?._id || '',
+      date: booking?.date || '',
+      location: booking?.location || '',
+      requirements: booking?.requirements || ''
     });
-  }
-  const handleShow = () => {
-    setShow(true);
-    setFormData({
-      bookingId: booking?._id,
-      eventId: booking?.eventId._id,
-      date: booking?.date,
-      location: booking?.location,
-      requirements: booking?.requirements
-    });
+  };
 
-  }
+  const handleShow = () => setShow(true);
 
   const handleUserEditBooking = async () => {
     const { bookingId, eventId, date, location, requirements } = formData;
@@ -48,7 +51,7 @@ const UserBookingEdit = ({ booking, allEvents, fetchUserBookings }) => {
           const result = await userEditBookingAPI(bookingId, reqBody, reqHeader);
           if (result.status === 200) {
             fetchUserBookings(); // Refresh the bookings list
-            handleClose()
+            handleClose();
           } else {
             console.log(result.response);
           }
@@ -59,11 +62,11 @@ const UserBookingEdit = ({ booking, allEvents, fetchUserBookings }) => {
     } else {
       alert('Please fill the form completely!');
     }
-  }
+  };
 
   return (
     <>
-      <div className="btn me-2" onClick={handleShow}><i className="text-warning fa-solid fa-pen-to-square"></i></div>  
+      <div className="btn me-2" onClick={handleShow}><i className="text-warning fa-solid fa-pen-to-square"></i></div>
 
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
@@ -124,8 +127,9 @@ const UserBookingEdit = ({ booking, allEvents, fetchUserBookings }) => {
           </Button>
           <Button onClick={handleUserEditBooking} variant="primary">Update</Button>
         </Modal.Footer>
-      </Modal>              
+      </Modal>
     </>
   )
 }
+
 export default UserBookingEdit;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import {Dropdown, DropdownButton, Table } from 'react-bootstrap';
-import { editBookingStatusAPI,getAllBookingsAPI } from '../Services/allAPI';
+import { Dropdown, DropdownButton, Table } from 'react-bootstrap';
+import { editBookingStatusAPI, getAllBookingsAPI } from '../Services/allAPI';
 
 const AdminViewBookings = () => {
   const [allbookings, setAllBookings] = useState([]);
@@ -14,14 +14,14 @@ const AdminViewBookings = () => {
     try {
       const result = await getAllBookingsAPI();
       setAllBookings(result.data);
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   };
 
   const handleStatusChange = async (bookingId, status) => {
     try {
-      await editBookingStatusAPI(bookingId, {status})
+      await editBookingStatusAPI(bookingId, { status });
       fetchBookings(); // Refresh bookings list after update
     } catch (err) {
       console.log(err);
@@ -31,10 +31,10 @@ const AdminViewBookings = () => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-GB'); // This will format the date as DD/MM/YYYY
-  }; 
+  };
 
   return (
-<div className="p-5">
+    <div className="p-5">
       <h2>View Bookings</h2>
       <Table striped bordered hover>
         <thead>
@@ -45,25 +45,24 @@ const AdminViewBookings = () => {
             <th>Location</th>
             <th>User Name</th>
             <th>Email</th>
-            <th>Phone</th> 
+            <th>Phone</th>
             <th>Requirements</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
           {
-            allbookings?.length>0 ?
-            allbookings.map((booking,index)=>(
-              <tr key={booking?._id}>
-                  <td>{index+1}</td>
-                  <td>{booking?.eventId.eventName}</td>
+            allbookings?.length > 0 ?
+              allbookings.map((booking, index) => (
+                <tr key={booking?._id}>
+                  <td>{index + 1}</td>
+                  <td>{booking?.eventId ? booking.eventId.eventName : 'N/A'}</td>
                   <td>{formatDate(booking?.date)}</td>
                   <td>{booking?.location}</td>
-                  <td>{booking?.userId.username}</td>
-                  <td>{booking?.userId.email}</td>
-                  <td>{booking?.userId.phone}</td>
+                  <td>{booking?.userId ? booking.userId.username : 'N/A'}</td>
+                  <td>{booking?.userId ? booking.userId.email : 'N/A'}</td>
+                  <td>{booking?.userId ? booking.userId.phone : 'N/A'}</td>
                   <td>{booking?.requirements}</td>
-
                   <td>
                     <DropdownButton title={booking?.status}>
                       <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Pending')}>Pending</Dropdown.Item>
@@ -71,15 +70,15 @@ const AdminViewBookings = () => {
                       <Dropdown.Item onClick={() => handleStatusChange(booking?._id, 'Rejected')}>Rejected</Dropdown.Item>
                     </DropdownButton>
                   </td>
-            </tr>
-            ))
-            :
-            <div className="text-danger fw-bolder">No Bookings Yet!</div>
-          }         
+                </tr>
+              ))
+              :
+              <div className="text-danger fw-bolder">No Bookings Yet!</div>
+          }
         </tbody>
       </Table>
     </div>
-  )
-}
+  );
+};
 
-export default AdminViewBookings
+export default AdminViewBookings;

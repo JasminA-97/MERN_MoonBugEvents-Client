@@ -78,7 +78,7 @@ const UserBookingHistory = () => {
 
   return (
     <div className="p-5">
-      <h2>Your Booking History</h2>
+      <h2 className='text-center pb-3'>Your Booking History</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -92,19 +92,19 @@ const UserBookingHistory = () => {
           </tr>
         </thead>
         <tbody>
-          {
+        {
             userBookings?.length > 0 ?
-            userBookings.map((booking, index) => (
+            userBookings?.map((booking, index) => (
               <tr key={booking?._id}>
                 <td>{index + 1}</td>
-                <td>{booking?.eventId.eventName}</td>
+                <td>{booking?.eventId ? booking.eventId.eventName : 'N/A'}</td>
                 <td>{formatDate(booking?.date)}</td>
                 <td>{booking?.location}</td>
                 <td>{booking?.requirements}</td>
                 <td>{booking?.status}</td>
                 <td className='d-flex justify-content-evenly align-items-center'>
                   <div><UserBookingEdit booking={booking} allEvents={allEvents} fetchUserBookings={fetchUserBookings} /></div>
-                  <div onClick={()=>handleDeleteBooking(booking?._id)} className='btn'><i className="text-danger fa-solid fa-trash"></i></div>
+                  <div onClick={() => handleDeleteBooking(booking?._id)} className='btn'><i className="text-danger fa-solid fa-trash"></i></div>
                 </td>
               </tr>
             ))
