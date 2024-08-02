@@ -7,7 +7,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-        <NavHeader/>
+        {/* <NavHeader/> */}
             <div className="row w-100">
                 <div style={{ background:'linear-gradient(to bottom, #000428, #004683)',height:'91vh'}} className="col-2 d-flex flex-column p-5">
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'adminhome'}><i className="fa-solid fa-house pe-3"></i>Home</Link>

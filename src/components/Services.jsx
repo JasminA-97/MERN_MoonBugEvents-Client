@@ -24,7 +24,7 @@ const Services = () => {
   return (
     <div className="services pt-5 mt-5">
     <Container-fluid className="text-center">
-        <h1 style={{fontFamily: "Dancing Script, cursive"}} className=' fw-bolder text-center'>Services</h1>
+        <h1 style={{fontFamily: "Dancing Script, cursive",color:'#7c047a'}} className=' fw-bolder text-center'>Services</h1>
        
         <Row className="row justify-content-center ms-5 me-5">
         {
@@ -46,7 +46,7 @@ const Services = () => {
                       </Card.Text>
                     </Card.Body>
                     <Card.Body>
-                    <Link to={`/singleEvent/${homeEvent._id}`}  style={{textDecoration:'none'}} className='btn btn-info rounded-5 ps-4 pe-4'>Enquire Now</Link>
+                    <Link to={`/singleEvent/${homeEvent._id}`}  style={{textDecoration:'none',backgroundColor:'#7c047a',color:'white'}} className='btn rounded-5 ps-4 pe-4'>Enquire Now</Link>
                     </Card.Body>
                 </Card>
                 </div>

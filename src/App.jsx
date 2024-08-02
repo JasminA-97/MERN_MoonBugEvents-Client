@@ -21,6 +21,10 @@ import { tokenAuthContext } from './contexts/AuthContext'
 import Logout from './components/Logout'
 import UserAddReview from './components/UserAddReview'
 import SingleEvent from './components/SingleEvent'
+import Services from './components/Services'
+import Videos from './components/Videos'
+import Contact from './components/Contact'
+import Testimonials from './components/Testimonials'
 
 function App() {
   const {isAuthorised,setIsAuthorised} = useContext(tokenAuthContext)
@@ -29,6 +33,11 @@ function App() {
 <>
     <Routes>
       <Route element={<Home/>} path='/'/>
+      <Route element={<Services/>} path='/services'/>
+      <Route element={<Videos/>} path='/videos'/>
+      <Route element={<Testimonials/>} path='/testimonials'/>
+      <Route element={<Contact/>} path='/contact'/>
+
       <Route element={<CardContainer/>} path='/login'/>
       <Route element={<CardContainer/>} path='/register'/>
       <Route element={<Logout/>} path='/logout'/>

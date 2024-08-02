@@ -5,9 +5,8 @@
     width: 400px;
     height: 450px;
     perspective: 1000px;
-    background: linear-gradient(to bottom, #000428, #004683);
-
-    
+    background: linear-gradient(to bottom,#f49cf2,#52014f);
+    /* background: linear-gradient(to bottom, #000428, #004683);     */
   }
   
 .card-face {
@@ -37,5 +36,21 @@
   .card-container.flipped .back-face {
     transform: rotateY(0deg);
   }
-  
+
+  .loginForm h2,.registerForm h2 {
+    background: linear-gradient(to bottom,#f49cf2,#52014f);
+    -webkit-background-clip:text;
+    color: transparent;
+    font-weight: 900;
+  }
+
+  .loginForm .btn-link,.registerForm .btn-link {
+    background: linear-gradient(to bottom,#af05ac,#390137);
+    -webkit-background-clip:text;
+    color: transparent;
+
+  }
+  .loginButton ,.registerButton{
+    background: linear-gradient(to bottom,#b946b7,#3e023c);  
+  }
   

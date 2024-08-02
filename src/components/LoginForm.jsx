@@ -55,8 +55,8 @@ const LoginForm = ({ toggleForm }) => {
   };
 
   return (
-    <div className='w-75'>
-      <h2 style={{ color: '#004683' }} className="w-100 text-center mb-4">Login</h2>
+    <div className='loginForm w-75'>
+      <h2 className="w-100 text-center mb-4">Login</h2>
       <form className='w-100' onSubmit={handleLogin}>
         <FloatingLabel controlId="floatingEmail" label="Email address" className="mb-3">
           <Form.Control value={userData.email} onChange={e => setUserData({ ...userData, email: e.target.value })} type="email" placeholder="name@example.com" required />
@@ -64,7 +64,7 @@ const LoginForm = ({ toggleForm }) => {
         <FloatingLabel controlId="floatingPassword" label="Password" className='mb-3'>
           <Form.Control value={userData.password} onChange={e => setUserData({ ...userData, password: e.target.value })} type="password" placeholder="Password" required />
         </FloatingLabel>
-        <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+        <button type="submit" className="loginButton text-light fw-bolder btn w-100" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
