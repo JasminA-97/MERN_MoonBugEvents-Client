@@ -25,6 +25,8 @@ import Services from './components/Services'
 import Videos from './components/Videos'
 import Contact from './components/Contact'
 import Testimonials from './components/Testimonials'
+import AboutUs from './components/AboutUs'
+import ViewProfile from './components/ViewProfile'
 
 function App() {
   const {isAuthorised,setIsAuthorised} = useContext(tokenAuthContext)
@@ -33,6 +35,7 @@ function App() {
 <>
     <Routes>
       <Route element={<Home/>} path='/'/>
+      <Route element={<AboutUs/>} path='/aboutUs'/>
       <Route element={<Services/>} path='/services'/>
       <Route element={<Videos/>} path='/videos'/>
       <Route element={<Testimonials/>} path='/testimonials'/>
@@ -48,7 +51,8 @@ function App() {
         <Route element={<AdminManageEvent/>} path='manage'/>
         <Route element={<AdminViewBookings/>} path='bookings'/>
         <Route element={<AdminViewUsers/>} path='viewusers'/>
-        <Route element={<AdminProfile/>} path='profile'/>
+        <Route element={<ViewProfile/>} path='viewprofile'/>
+        <Route element={<AdminProfile/>} path='editprofile'/>
       </Route>
 
       <Route element={isAuthorised?<UserDashboard/>:<Navigate to={'/login'}/>} path='/userdashboard/*'>
@@ -56,7 +60,8 @@ function App() {
         <Route element={<UserBookEvent />} path="userBookEvents" />
         <Route element={<UserBookingHistory/>}  path='userBookingHistory'/>
         <Route element={<UserAddReview/>}  path='userAddReview'/>
-        <Route element={<UserProfile/>} path='userProfile'/>
+        <Route element={<ViewProfile/>} path='viewprofile'/>
+        <Route element={<UserProfile/>} path='updateprofile'/>
       </Route>
 
     </Routes>

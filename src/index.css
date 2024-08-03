@@ -123,30 +123,6 @@ body {
     font-size: 18px;
 }
 
-/* .bg-image {
-    background-image: url('/src/assets/Homebg2.jpg');
-    background-size:cover;
-    background-position:left;
-    height: 90vh; 
-    position: relative;
-    margin-top: 70px;
-} */
-
-/* .navbar-transparent {
-    background-color: transparent !important;
-} */
-
-/* .header-content {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px 0;
-} */
-/* .header-content h4{
-    color: rgb(242, 239, 239);
-} */
 .instagram{
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     -webkit-background-clip: text;
@@ -189,6 +165,10 @@ body {
     color: #ffffff;
     font-size: 25px;
     font-weight: bolder;
+  }
+
+  .enquire:hover{
+    background: linear-gradient(to bottom,#f173ef,#52014f);
   }
   
 /* src/components/LoginForm.css */

@@ -76,10 +76,11 @@ const UserBookEvent = () => {
   };
 
   return (
-    <div style={{ height: '80vh' }} className="w-100">
+    <div style={{ height: '100vh' }} className="w-100 bg-light">
+                <h2 className='p-5 text-center'>Book an Event</h2>
+
       <div className='w-100 d-flex justify-content-center align-items-center'>
-        <form className='w-50' onSubmit={handleSubmit}>
-          <h2 className='p-5 text-center'>Book an Event</h2>
+        <form className='w-50 border border-2 rounded-5 p-5 bg-white' onSubmit={handleSubmit}>
           <FloatingLabel controlId="floatingEventType" label="Event Type" className="mb-3">
             <Form.Select name="eventId" value={formData.eventId} onChange={e => setFormData({ ...formData, eventId: e.target.value })} required>
               <option value="">Select event type</option>
@@ -97,8 +98,10 @@ const UserBookEvent = () => {
           <FloatingLabel controlId="floatingRequirements" label="Special Requirements" className="mb-3">
             <Form.Control style={{ height: '100px' }} as="textarea" name="requirements" placeholder="Special Requirements" value={formData.requirements} onChange={e => setFormData({ ...formData, requirements: e.target.value })} />
           </FloatingLabel>
-          <Button type="submit" className="w-100">Book Event</Button>
-        </form>
+          <div className="text-center mt-4">
+            <button style={{backgroundColor:'#7c047a', color:'white'}} type="submit" className="enquire btn border rounded-5 ps-3 pe-3 fw-bolder">Book Event</button>
+          </div>
+       </form>
       </div>
     </div>
   );

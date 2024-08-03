@@ -30,9 +30,9 @@ const AdminViewUsers = () => {
 
 
   return (
-    <div className="p-5">
+    <div style={{height:'100vh'}} className="p-5 bg-light">
       <h2>View Users</h2>
-      <Table striped bordered hover>
+      <Table className='border border-2' hover>
         <thead>
           <tr>
             <th>SL.No</th>

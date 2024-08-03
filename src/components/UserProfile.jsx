@@ -87,16 +87,16 @@ const UserProfile = () => {
       <h2 className='text-center p-3'>Update Profile</h2>
       <div className="w-100">
         <div className='d-flex justify-content-center align-items-center w-100'>
-          <form className='w-50' onSubmit={handleUpdateProfile}>
+          <form className='w-50 border border-5 rounded-5 ps-3 pe-3 pb-3 ' onSubmit={handleUpdateProfile}>
           <label className='d-flex justify-content-center mb-2'>
          
             <input type="file" style={{display:'none'}} onChange={e=>setProfile({...profile,profilePic:e.target.files[0]})}/>
 
             {
               existingImg==""?
-              <img width={'200px'} height={'180px'} className='rounded-circle' src={preview?preview:profileImg} alt="" />
+              <img width={'200px'} height={'200px'} className='rounded-circle' src={preview?preview:profileImg} alt="" />
               :
-              <img width={'200px'} height={'180px'} className='rounded-circle' src={preview ? preview : existingImg ? `${SERVERURL}/uploads/${existingImg}` : profileImg} alt="" />
+              <img width={'200px'} height={'200px'} className='rounded-circle' src={preview ? preview : existingImg ? `${SERVERURL}/uploads/${existingImg}` : profileImg} alt="" />
 
             }
 
@@ -140,9 +140,10 @@ const UserProfile = () => {
               />
             </FloatingLabel>
             <div className='d-flex justify-content-evenly align-items-center'>
-              <Button className='btn' type="submit">Update</Button>
-              <Button className='btn btn-secondary' type="button" onClick={handleCancel}>Cancel</Button>
+              <button style={{backgroundColor:'#7c047a', color:'white'}} className='enquire btn border rounded-5 ps-3 pe-3 fw-bolder' type="submit">Update</button>
+              <Button className='btn btn-secondary border rounded-5 ps-3 pe-3 fw-bolder' type="button" onClick={handleCancel}>Cancel</Button>
             </div>
+
           </form>
         </div>
       </div>

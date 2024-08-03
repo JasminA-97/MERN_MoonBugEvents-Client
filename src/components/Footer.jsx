@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import img1 from '../assets/img1.jpg'
 
 const Footer = () => {
   const [comment, setComment] = useState('');
@@ -19,12 +20,13 @@ const Footer = () => {
 
           <div className="col-lg-3"> 
             <h4 className='text-white mb-3'>About Us</h4>
+            <img src={img1} style={{height:'65px',width:'65px'}} className='mb-2' alt="image" />
             <p>We create unforgettable events with style and elegance.</p>
           </div>
           <div  className="col-lg-3">
             <h4 className='text-white mb-3'>Quick Links</h4>
             <ul  className="list-unstyled">
-              <li><Link style={{textDecoration:'none'}} className='text-white' to={'/'}>Home</Link></li>
+              <li><Link style={{textDecoration:'none'}} className='text-white' to={'/aboutUs'}>About Us</Link></li>
               <li><Link style={{textDecoration:'none'}} className='text-white' to={'/services'}>Services</Link></li>
               <li><Link style={{textDecoration:'none'}} className='text-white' to={'/testimonials'}>Testimonials</Link></li>
               <li><Link style={{textDecoration:'none'}} className='text-white' to={'/contact'}>Contact Us</Link></li>
@@ -67,7 +69,7 @@ const Footer = () => {
           </div>
          
         </div>
-        <hr className="bg-white" />
+        <hr className="bg-white mt-1 mb-1" />
         <div className="row">
           <div className="col text-center">
             <p>&copy; 2024 MoonBug Events. All rights reserved.</p>

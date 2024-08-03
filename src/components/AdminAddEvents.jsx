@@ -64,7 +64,7 @@ const AdminAddEvents = () => {
 
   return (
     <>
-      <button onClick={handleShow} className='btn btn-primary'>
+      <button style={{backgroundColor:'#7c047a', color:'white'}} onClick={handleShow} className='enquire btn border rounded-5 ps-4 pe-4 fw-bolder'>
         <i className="fa-solid fa-plus"></i>&nbsp;Event
       </button>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>

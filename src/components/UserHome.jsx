@@ -20,12 +20,12 @@ const UserHome = () => {
 
   return (
     <>
-      <h1 className='m-5'>Hey&nbsp;<span className='text-primary'>{userName},</span></h1>
+      <h3 className='m-5'>Hey&nbsp;<span className='username'>{userName},</span></h3>
       <div style={{height:'50%'}} className="d-flex flex-column justify-content-center align-items-center">
           <h2>Welcome to MoonBug Events!</h2>
           <h4 className='pt-2'>Book Your Event</h4>
           <p className='pt-2'>We are delighted to help you plan and manage your special events <p>Explore our services and book your event with us today!</p></p>
-          <button onClick={handleNavigate} className="btn btn-info rounded-5">Book Now</button>
+          <button style={{backgroundColor:'#7c047a',color:'white'}} onClick={handleNavigate} className="enquire btn border rounded-5 ps-3 pe-3 fw-bolder">Book Now</button>
       </div>
     </>
   )

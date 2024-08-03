@@ -14,7 +14,7 @@ useEffect(()=>{
 
   return (
     <>
-      <h1 className='m-5'>Welcome&nbsp;<span className='text-primary'>{userName},</span></h1>
+      <h3 className='m-5'>Hey&nbsp;<span className='username'>{userName},</span></h3>
       </>
   )
 }

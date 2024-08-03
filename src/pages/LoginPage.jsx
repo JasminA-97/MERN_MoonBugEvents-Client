@@ -7,8 +7,7 @@ import LogoHeader from '../components/LogoHeader';
 
 const LoginPage = () => {
     return (
-        <div className="login-page">
-            <LogoHeader/>
+        <div className="login-page">   
             <LoginForm />
         </div>
     );

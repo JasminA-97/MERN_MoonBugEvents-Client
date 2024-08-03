@@ -14,8 +14,8 @@ const Logout = () => {
   }
 
   return (
-    <div>
-        <button onClick={handleLogout} className='mb-4 text-light' style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', textDecoration: 'none', cursor: 'pointer' }}>
+    <div className='mt-auto mb-5'>
+        <button onClick={handleLogout} className='text-light' style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', textDecoration: 'none', cursor: 'pointer' }}>
             <i className="fa-solid fa-right-from-bracket pe-3"></i>Logout
         </button>
   </div>

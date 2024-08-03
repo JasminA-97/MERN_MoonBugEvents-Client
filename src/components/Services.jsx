@@ -46,7 +46,7 @@ const Services = () => {
                       </Card.Text>
                     </Card.Body>
                     <Card.Body>
-                    <Link to={`/singleEvent/${homeEvent._id}`}  style={{textDecoration:'none',backgroundColor:'#7c047a',color:'white'}} className='btn rounded-5 ps-4 pe-4'>Enquire Now</Link>
+                    <Link to={`/singleEvent/${homeEvent._id}`}  style={{textDecoration:'none',backgroundColor:'#7c047a',color:'white'}} className='enquire btn border rounded-5 ps-4 pe-4'>Enquire Now</Link>
                     </Card.Body>
                 </Card>
                 </div>

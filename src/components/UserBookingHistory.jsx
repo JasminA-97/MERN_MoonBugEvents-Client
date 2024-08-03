@@ -77,9 +77,9 @@ const UserBookingHistory = () => {
   }; 
 
   return (
-    <div className="p-5">
+    <div style={{height:'100vh'}} className="p-5 bg-light">
       <h2 className='text-center pb-3'>Your Booking History</h2>
-      <Table striped bordered hover>
+      <Table hover  className='border border-2'>
         <thead>
           <tr>
             <th>SL.No</th>

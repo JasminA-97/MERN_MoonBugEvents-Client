@@ -34,20 +34,20 @@ const AdminViewBookings = () => {
   };
 
   return (
-    <div className="p-5">
+    <div style={{height:'100vh'}} className="p-5 bg-light">
       <h2>View Bookings</h2>
-      <Table striped bordered hover>
+      <Table  hover className='border border-2' >
         <thead>
           <tr>
-            <th>SL.No</th>
-            <th>Event</th>
-            <th>Booking Date</th>
-            <th>Location</th>
-            <th>User Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Requirements</th>
-            <th>Status</th>
+            <th  className='p-3'>SL.No</th>
+            <th className='p-3'>Event</th>
+            <th className='p-3'>Booking Date</th>
+            <th className='p-3'>Location</th>
+            <th className='p-3'>User Name</th>
+            <th className='p-3'>Email</th>
+            <th className='p-3'>Phone</th>
+            <th className='p-3'>Requirements</th>
+            <th className='p-3'>Status</th>
           </tr>
         </thead>
         <tbody>

@@ -47,10 +47,10 @@ const UserAddReview = () => {
   };
 
   return (
-    <div className="user-add-review">
+    <div style={{ height: '100vh' }} className="user-add-review bg-light w-100">
       <h2 className='text-center p-5'>Add a Review</h2>
       <div className='d-flex justify-content-center flex-column align-items-center'>
-        <Form className='w-50' onSubmit={handleSubmit}>
+        <Form className='w-50 border border-2 rounded-5 p-5 bg-white ' onSubmit={handleSubmit}>
           <FloatingLabel controlId="floatingReview" label="Review" className="mb-3">
             <Form.Control
               value={formData.review}
@@ -84,10 +84,9 @@ const UserAddReview = () => {
               );
             })}
           </div>
-
-          <Button variant="primary" type="submit">
-            Submit Review
-          </Button>
+          <div className="text-center mt-4">
+            <button style={{backgroundColor:'#7c047a', color:'white'}} type="submit" className="enquire btn border rounded-5 ps-3 pe-3 fw-bolder">Submit Review</button>
+          </div>
         </Form>
       </div>
     </div>

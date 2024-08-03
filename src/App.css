@@ -1,4 +1,25 @@
 /* inside admin dashboard */
+.adminSidebar{
+  background: linear-gradient(to bottom,#af05ac,#390137);
+  height: 100vh;
+}
+
+.username{
+  background: linear-gradient(to bottom,#f49cf2,#52014f);
+  -webkit-background-clip:text;
+  color: transparent;
+}
+
+.dropdownItem {
+  padding: 0.5rem 1rem;
+}
+
+.dropdownItem:hover {
+  background-color: transparent !important; /* Removes the default hover background */
+  padding-left: 50px;
+  transition: 0.5s ease;
+}
+
 .search:focus{
     outline: none;
     border: none;
