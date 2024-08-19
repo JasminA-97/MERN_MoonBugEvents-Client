@@ -20,7 +20,7 @@ const ViewProfile = () => {
 
   return (
     <>
-      <h2 className='text-center p-3'>Profile</h2>
+      <h3 className='text-center mt-5'>Profile</h3>
       <div style={{height:'60vh'}} className='w-100 d-flex flex-wrap justify-content-center align-items-center'>
         <div className="row pt-3 pb-3 border border-5 rounded-5 w-50 d-flex justify-content-center align-items-center">
           <div className="col-lg-5 text-center">

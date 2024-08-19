@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router-dom'
 import Logout from '../components/Logout'
 import SidebarUser from '../components/SidebarUser'
 import { Dropdown } from 'react-bootstrap'
+import NavDashboard from '../components/NavDashboard'
 
 const UserDashboard = () => {
 
@@ -11,7 +12,7 @@ const UserDashboard = () => {
     <>
       {/* <NavHeader/> */}
             <div className="row w-100"> 
-                <div className="adminSidebar col-2 d-flex flex-column pt-5 ps-4">
+                <div className="adminSidebar col-md-3 col-lg-2  d-flex flex-column pt-5 ps-4" style={{zIndex:'10'}}>
                     <SidebarUser/>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userHome'}><i className="fa-solid fa-house pe-3"></i>Home</Link>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userBookEvents'}><i className="fa-solid fa-bars-progress pe-3"></i>Book Events</Link>
@@ -27,13 +28,13 @@ const UserDashboard = () => {
                           <Link className='text-white' style={{textDecoration:'none',fontSize:'14px'}} to={'viewprofile'}><i style={{fontSize:'12px'}} className="greatersymbol pe-3 fa-solid fa-greater-than"></i>View Profile</Link> 
                         </Dropdown.Item>
                         <Dropdown.Item className='dropdownItem'>
-                          <Link className='text-light' style={{textDecoration:'none',fontSize:'14px'}} to={'updateprofile'}><i style={{fontSize:'12px'}} className="greatersymbol pe-3 fa-solid fa-greater-than"></i>Update Profile</Link> 
+                          <Link className='text-light' style={{textDecoration:'none',fontSize:'14px'}} to={'editprofile'}><i style={{fontSize:'12px'}} className="greatersymbol pe-3 fa-solid fa-greater-than"></i>Update Profile</Link> 
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-                    <Logout/>               
+                    <Logout insideDashboard={true}/>              
                  </div>
-                <div style={{ height: '100vh',overflowY:'scroll'}} className="col p-0"><Outlet/></div>
+                <div style={{ height: 'auto',overflowY:'hidden',marginTop:'45px'}} className="col-md-9 col-lg-10  p-0"><NavDashboard/><Outlet/></div>
             </div>
     </>
   )

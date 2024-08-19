@@ -1,5 +1,4 @@
 import React from 'react'
-import NavHeader from '../components/NavHeader'
 import { Link, Outlet} from 'react-router-dom'
 import Logout from '../components/Logout'
 import SidebarUser from '../components/SidebarUser'
@@ -9,9 +8,8 @@ import NavDashboard from '../components/NavDashboard'
 const AdminDashboard = () => {
   return (
     <>
-        {/* <NavHeader/> */}
             <div className="row w-100">
-                <div className="adminSidebar col-2 d-flex flex-column pt-5 ps-4">
+                <div className="adminSidebar col-md-3 col-lg-2 d-flex flex-column pt-5 ps-4" style={{zIndex:'10'}}>
                   <SidebarUser/>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'adminhome'}><i className="fa-solid fa-house pe-3"></i>Home</Link>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'manage'}><i className="fa-solid fa-bars-progress pe-3"></i>Manage Events</Link>
@@ -31,13 +29,11 @@ const AdminDashboard = () => {
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-
-                    <Logout/>
-                </div>
-                <div style={{ height: '100vh',overflowY:'scroll'}} className="col-10 p-0" ><NavDashboard/><Outlet/></div>
+                    <Logout insideDashboard={true}/>
+                </div >
+                <div style={{ height:'100vh',overflowY:'scroll',marginTop:'45px'}} className="col-md-9 col-lg-10 p-0" ><NavDashboard/><Outlet/></div>
             </div>
     </>
   )
 }
-
 export default AdminDashboard

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { tokenAuthContext } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
-const Logout = () => {
+const Logout = ({insideDashboard}) => {
     const navigate  = useNavigate()
     // Authentication
     const {isAuthorised,setIsAuthorised} = useContext(tokenAuthContext)
@@ -13,13 +13,15 @@ const Logout = () => {
     navigate('/')
   }
 
-  return (
-    <div className='mt-auto mb-5'>
-        <button onClick={handleLogout} className='text-light' style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', textDecoration: 'none', cursor: 'pointer' }}>
-            <i className="fa-solid fa-right-from-bracket pe-3"></i>Logout
-        </button>
-  </div>
-  )
+return (
+  <button style={{ background: 'none', border: 'none', padding: 0, textAlign: 'left', textDecoration: 'none', cursor: 'pointer' }}
+    className={`btn ${insideDashboard ? 'text-white mt-auto p-0 mb-5' : 'text-dark'}`} 
+    onClick={handleLogout}>
+    <i className="fa-solid fa-right-from-bracket pe-2"></i>Logout
+  </button> 
+);
 }
 
-export default Logout
+export default Logout;
+
+

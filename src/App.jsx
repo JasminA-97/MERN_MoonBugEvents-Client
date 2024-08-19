@@ -61,7 +61,7 @@ function App() {
         <Route element={<UserBookingHistory/>}  path='userBookingHistory'/>
         <Route element={<UserAddReview/>}  path='userAddReview'/>
         <Route element={<ViewProfile/>} path='viewprofile'/>
-        <Route element={<UserProfile/>} path='updateprofile'/>
+        <Route element={<UserProfile/>} path='editprofile'/>
       </Route>
 
     </Routes>

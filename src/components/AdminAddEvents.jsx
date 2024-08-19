@@ -5,7 +5,7 @@ import { addResponseContext } from '../contexts/ContextAPI';
 import addImg from '../assets/AddImg.png';
 
 const AdminAddEvents = () => {
-  const { setAddresponse } = useContext(addResponseContext);
+  const { addResponse,setAddresponse } = useContext(addResponseContext);
   const [eventDetails, setEventDetails] = useState({
     eventName: "", eventCost: "", eventDescription: "", eventImg: ""
   });

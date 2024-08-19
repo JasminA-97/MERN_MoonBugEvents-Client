@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Form, FloatingLabel, Button } from 'react-bootstrap';
+import React from 'react'
 import UserProfile from './UserProfile';
 
 const AdminProfile = () => {

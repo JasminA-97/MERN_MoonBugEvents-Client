@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import { editUserAPI } from '../Services/allAPI';
 import profileImg from '../assets/profileImg.jpg';
 import SERVERURL from '../Services/serverurl';
+import { photoAddResponseContext } from '../contexts/ContextAPI';
 
 const UserProfile = () => {
+  const {photoAddResponse,setPhotoAddResponse}=useContext(photoAddResponseContext)
   const [profile, setProfile] = useState({
     username: "", email: "", password: "", phone: "", profilePic: ""
   });
@@ -56,6 +58,7 @@ const UserProfile = () => {
           const result = await editUserAPI(reqBody, reqHeader);
           if (result.status === 200) {
             sessionStorage.setItem("user", JSON.stringify(result.data));
+            setPhotoAddResponse(result)
             alert("Profile updated successfully!");
           }else{
             console.log(result);
@@ -84,7 +87,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <h2 className='text-center p-3'>Update Profile</h2>
+      <h3 className='text-center pb-3 mt-5'>Update Profile</h3>
       <div className="w-100">
         <div className='d-flex justify-content-center align-items-center w-100'>
           <form className='w-50 border border-5 rounded-5 ps-3 pe-3 pb-3 ' onSubmit={handleUpdateProfile}>

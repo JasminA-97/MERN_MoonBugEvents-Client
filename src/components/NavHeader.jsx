@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Logout from './Logout';
 
 const NavHeader = () => {
   return (
@@ -38,6 +39,9 @@ const NavHeader = () => {
             <Nav.Link><Link style={{color:'#7c047a'}} to={'/videos'} className="fw-bolder links">Videos</Link></Nav.Link>
             <Nav.Link><Link style={{color:'#7c047a'}} to={'/testimonials'} className="fw-bolder links">Testimonials</Link></Nav.Link>
             <Nav.Link><Link style={{color:'#7c047a'}} to={'/contact'} className="fw-bolder links">Contact us</Link></Nav.Link>
+          </Nav>
+          <Nav>
+          <Nav.Link><Link to={'/login'} style={{textDecoration:'none',backgroundColor:'#af05ac',color:'white'}}className='enquire btn border ms-4 ps-4 pe-4 fw-bolder'>Login</Link></Nav.Link>   
           </Nav>
         </Navbar.Collapse>
       </Navbar>

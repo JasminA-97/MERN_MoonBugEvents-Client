@@ -1,7 +1,7 @@
 /* inside admin dashboard */
 .adminSidebar{
   background: linear-gradient(to bottom,#af05ac,#390137);
-  height: 100vh;
+
 }
 
 .username{
@@ -16,7 +16,7 @@
 
 .dropdownItem:hover {
   background-color: transparent !important; /* Removes the default hover background */
-  padding-left: 50px;
+  padding-left: 30px;
   transition: 0.5s ease;
 }
 
@@ -52,6 +52,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 0;
     transition: opacity 0.3s ease;
+    border-radius: 15px;
   }
   
   .eventCard:hover .card-overlay {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getEventByIdAPI } from '../Services/allAPI';
 import SERVERURL from '../Services/serverurl';
+import NavHeader from './NavHeader';
 
 const SingleEvent = () => {
     const { eid } = useParams();
@@ -28,11 +29,12 @@ const SingleEvent = () => {
 
     return (
         <div>
+            <NavHeader/>
             {singleEvent ? (
                 <section className="py-5">
                     <div className="container px-4 px-lg-5 my-5">
                         <div className="row gx-4 gx-lg-5 align-items-center">
-                            <div className="col-md-6">
+                            <div className="col-md-6 mt-5">
                                 <img style={{height:'36rem',width:'30rem'}}
                                     className="card-img-top mb-5 mb-md-0"
                                     src={`${SERVERURL}/uploads/${singleEvent?.eventImg || 'placeholder.jpg'}`}
@@ -40,9 +42,9 @@ const SingleEvent = () => {
                                 />
                             </div>
                             <div className="col-md-6">
-                                <h1 className="display-5 fw-bolder">
+                                <h2 className=" fw-bolder">
                                     {singleEvent?.eventName || 'Event Name'}
-                                </h1>
+                                </h2>
                                 <div className="fs-5 mb-5">
                                     <span>Min Cost : &#x20b9; {singleEvent?.eventCost || 'N/A'}</span>
                                 </div>

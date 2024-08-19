@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import profileImg from '../assets/profileImg.jpg';
 import SERVERURL from '../Services/serverurl';
+import { photoAddResponseContext } from '../contexts/ContextAPI';
 
 const SidebarUser = () => {    
+  const {photoAddResponse,setPhotoAddResponse}=useContext(photoAddResponseContext)
     const [profile, setProfile] = useState({
         username: "",
         email: "",
@@ -23,14 +25,14 @@ const SidebarUser = () => {
           });
           setExistingImg(existingProfile.profilePic || "");
         }
-    }, []);
+    }, [photoAddResponse]);
   return (
     <div className="d-flex flex-column align-items-center mb-4">
     <img
       height={'100px'}
       width={'100px'}
       className='border rounded-circle bg-light'
-      src={existingImg ? `${SERVERURL}/uploads/${existingImg}` : profileImg}
+      src={existingImg ? `${SERVERURL}/uploads/${existingImg}`: profileImg}
       alt="User Profile"
     />
     <h6 className='mt-2 text-white'>{profile.username}</h6>

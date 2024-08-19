@@ -79,40 +79,42 @@ const UserBookingHistory = () => {
   return (
     <div style={{height:'100vh'}} className="p-5 bg-light">
       <h2 className='text-center pb-3'>Your Booking History</h2>
-      <Table hover  className='border border-2'>
-        <thead>
-          <tr>
-            <th>SL.No</th>
-            <th>Event</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Requirements</th>
-            <th>Status</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        {
-            userBookings?.length > 0 ?
-            userBookings?.map((booking, index) => (
-              <tr key={booking?._id}>
-                <td>{index + 1}</td>
-                <td>{booking?.eventId ? booking.eventId.eventName : 'N/A'}</td>
-                <td>{formatDate(booking?.date)}</td>
-                <td>{booking?.location}</td>
-                <td>{booking?.requirements}</td>
-                <td>{booking?.status}</td>
-                <td className='d-flex justify-content-evenly align-items-center'>
-                  <div><UserBookingEdit booking={booking} allEvents={allEvents} fetchUserBookings={fetchUserBookings} /></div>
-                  <div onClick={() => handleDeleteBooking(booking?._id)} className='btn'><i className="text-danger fa-solid fa-trash"></i></div>
-                </td>
-              </tr>
-            ))
-            :
-            <div className="text-danger fw-bolder">You have no booking history!</div>
-          }        
-        </tbody>
-      </Table>
+<div className=' d-flex justify-content-center align-items-center'>
+        <Table hover className='border border-2'>
+          <thead>
+            <tr>
+              <th className='p-3'>SL.No</th>
+              <th className='p-3'>Event</th>
+              <th className='p-3'>Date</th>
+              <th className='p-3'>Location</th>
+              <th className='p-3'>Requirements</th>
+              <th className='p-3'>Status</th>
+              <th className='p-3'></th>
+            </tr>
+          </thead>
+          <tbody>
+          {
+              userBookings?.length > 0 ?
+              userBookings?.map((booking, index) => (
+                <tr key={booking?._id}>
+                  <td>{index + 1}</td>
+                  <td>{booking?.eventId ? booking.eventId.eventName : 'N/A'}</td>
+                  <td>{formatDate(booking?.date)}</td>
+                  <td>{booking?.location}</td>
+                  <td>{booking?.requirements}</td>
+                  <td>{booking?.status}</td>
+                  <td className='d-flex justify-content-evenly align-items-center'>
+                    <div><UserBookingEdit booking={booking} allEvents={allEvents} fetchUserBookings={fetchUserBookings} /></div>
+                    <div onClick={() => handleDeleteBooking(booking?._id)} className='btn'><i className="text-danger fa-solid fa-trash"></i></div>
+                  </td>
+                </tr>
+              ))
+              :
+              <div className="text-danger fw-bolder">You have no booking history!</div>
+            }        
+          </tbody>
+        </Table>
+</div>
     </div>
   );
 };

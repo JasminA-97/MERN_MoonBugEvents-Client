@@ -49,12 +49,12 @@ const AdminManageEvent = () => {
         {/* search */}
         <div className='d-flex flex-wrap align-items-center bg-white rounded-4 p-1 border'> 
           <i className="fa-solid fa-magnifying-glass ps-2 pe-1"></i>
-          <input onChange={e=>setSearchKey(e.target.value)} type="text" style={{width:'300px',border:'none'}} className='search rounded-4 fs-5 ps-2'/>
+          <input onChange={e=>setSearchKey(e.target.value)} type="text" style={{width:'300px',border:'none'}} className='search rounded-4 fs-6 ps-2 pt-1' placeholder='Search By Event Name'/>
         </div>
      </div>
 
-      <div className='d-flex justify-content-center align-items-center'>
-        <Table hover className='w-75'>
+      <div className='d-flex justify-content-center align-items-center pb-5'>
+        <Table hover className='w-75 mb-5 '>
           <thead>
             <tr >
               <th className='p-3'>Sl.No</th>
