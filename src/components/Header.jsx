@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavHeader from './NavHeader';
 import { Carousel } from 'react-bootstrap';
-import homebg1 from '../assets/homebg1.jpg';
+import homebg1 from '../assets/homebg1.jpg'
 import homebg2 from '../assets/homebg2.jpg';
 import homebg3 from '../assets/homebg3.jpg';
 
