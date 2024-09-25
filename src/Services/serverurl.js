@@ -1,2 +1,2 @@
-const SERVERURL = "http://localhost:3000"
+const SERVERURL = "https://mern-moonbugevents-server.onrender.com"
 export default SERVERURL

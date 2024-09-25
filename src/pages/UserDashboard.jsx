@@ -1,5 +1,5 @@
 import React from 'react'
-import NavHeader from '../components/NavHeader'
+
 import { Link, Outlet } from 'react-router-dom'
 import Logout from '../components/Logout'
 import SidebarUser from '../components/SidebarUser'
@@ -10,9 +10,8 @@ const UserDashboard = () => {
 
   return (
     <>
-      {/* <NavHeader/> */}
-            <div className="row w-100"> 
-                <div className="adminSidebar col-md-3 col-lg-2  d-flex flex-column pt-5 ps-4" style={{zIndex:'10'}}>
+            <div className="d-flex" style={{ height: '100vh', overflow: 'hidden' }}>
+                  <div className="adminSidebar col-md-3 col-lg-2 d-flex flex-column pt-5 ps-4" style={{ zIndex: '10', height: '100%', overflowY: 'auto' }}>
                     <SidebarUser/>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userHome'}><i className="fa-solid fa-house pe-3"></i>Home</Link>
                     <Link className='mb-4 text-light' style={{textDecoration:'none'}} to={'userBookEvents'}><i className="fa-solid fa-bars-progress pe-3"></i>Book Events</Link>
@@ -34,8 +33,9 @@ const UserDashboard = () => {
                     </Dropdown>
                     <Logout insideDashboard={true}/>              
                  </div>
-                <div style={{ height: 'auto',overflowY:'hidden',marginTop:'45px'}} className="col-md-9 col-lg-10  p-0"><NavDashboard/><Outlet/></div>
-            </div>
+                 <div style={{ flex: 1, height: '100%', overflowY: 'auto', marginTop: '40px' }} className="col-md-9 col-lg-10 p-0">
+                  <NavDashboard/><Outlet/></div> 
+                </div>
     </>
   )
 }

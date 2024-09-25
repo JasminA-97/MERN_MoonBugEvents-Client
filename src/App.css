@@ -1,7 +1,41 @@
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 7px;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  padding: 8px 12px;
+  border-radius: 50px;
+  background-color: #7c047a;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.page-link:hover {
+  background-color: #5a0358;
+}
+
+.page-item.active .page-link {
+  background-color: #ff69b4;
+  border-color: #ff69b4;
+}
+
+.page-item.disabled .page-link {
+  background-color: #ddd;
+  color: #777;
+  cursor: not-allowed;
+}
+
 /* inside admin dashboard */
 .adminSidebar{
   background: linear-gradient(to bottom,#af05ac,#390137);
-
 }
 
 .username{
