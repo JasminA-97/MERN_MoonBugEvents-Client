@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { addReviewAPI } from '../Services/allAPI';
 import { FaStar } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const UserAddReview = () => {
   const [formData, setFormData] = useState({
@@ -25,20 +26,20 @@ const UserAddReview = () => {
         try {
           const result = await addReviewAPI(reqBody, reqHeader);
           if (result.status === 200) {
-            alert('Review added successfully!');
+            toast.info('Review added successfully!');
             setFormData({ review: '', rating: 0 });
           } else {
-            alert(result.response.data);
+            toast.info(result.response.data);
           }
         } catch (err) {
           console.log(err);
-          alert('Error occurred while adding review.');
+          toast.info('Error occurred while adding review.');
         }
       } else {
-        alert('No token found. Please log in again.');
+        toast.warning('No token found. Please log in again.');
       }
     } else {
-      alert('Please fill all required fields!');
+      toast.info('Please fill all required fields!');
     }
   };
 

@@ -3,6 +3,7 @@ import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap';
 import { addEventAPI } from '../Services/allAPI';
 import { addResponseContext } from '../contexts/ContextAPI';
 import addImg from '../assets/AddImg.png';
+import { toast } from 'react-toastify';
 
 const AdminAddEvents = () => {
   const { addResponse,setAddresponse } = useContext(addResponseContext);
@@ -45,13 +46,13 @@ const AdminAddEvents = () => {
           setAddresponse(result.data);
           handleClose(); // Close the modal and reset state
         } else {
-          alert(result.response.data);
+          toast.info(result.response.data);
         }
       } catch (err) {
         console.log(err);
       }
     } else {
-      alert('No token found. Please log in again.');
+      toast.warning('No token found. Please log in again.');
     }
   };
 

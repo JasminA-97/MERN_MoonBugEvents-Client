@@ -4,6 +4,7 @@ import { editUserAPI } from '../Services/allAPI';
 import profileImg from '../assets/profileImg.jpg';
 import SERVERURL from '../Services/serverurl';
 import { photoAddResponseContext } from '../contexts/ContextAPI';
+import { toast } from 'react-toastify';
 
 const UserProfile = () => {
   const {photoAddResponse,setPhotoAddResponse}=useContext(photoAddResponseContext)
@@ -59,7 +60,7 @@ const UserProfile = () => {
           if (result.status === 200) {
             sessionStorage.setItem("user", JSON.stringify(result.data));
             setPhotoAddResponse(result)
-            alert("Profile updated successfully!");
+            toast.success("Profile updated successfully!");
           }else{
             console.log(result);
           }
@@ -68,7 +69,7 @@ const UserProfile = () => {
         }
       }
     }else{
-      alert('Please fill the form completely!')
+      toast.info('Please fill the form completely!')
     }
   };
 

@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './bootstrap.min.css'
 import ContextAPI from './contexts/ContextAPI.jsx'
 import AuthContext from './contexts/AuthContext.jsx'
+import { ToastContainer } from 'react-toastify'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ContextAPI>
         <BrowserRouter>
           <App/>
+          <ToastContainer position='top-center' theme='colored' autoClose={3000} />
         </BrowserRouter>
       </ContextAPI>
     </AuthContext>

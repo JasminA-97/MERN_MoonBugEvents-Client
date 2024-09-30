@@ -3,6 +3,7 @@ import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap';
 import { editResponseContext } from '../contexts/ContextAPI';
 import { editEventAPI } from '../Services/allAPI';
 import SERVERURL from '../Services/serverurl';
+import { toast } from 'react-toastify';
 
 const AdminEditEvents = ({ evnt }) => {
   const { editResponse, setEditResponse } = useContext(editResponseContext);
@@ -73,7 +74,7 @@ const AdminEditEvents = ({ evnt }) => {
           console.log(err);
         }
       } else {
-        alert('Please fill the form!!!');
+        toast.warning('Please fill the form!!!');
       }
     }
   };

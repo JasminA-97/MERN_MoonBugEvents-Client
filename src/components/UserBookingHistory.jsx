@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { getFullEventsAPI, getUserBookingAPI, userDeleteBookingAPI } from '../Services/allAPI'; // Assuming this API call exists
 import UserBookingEdit from './UserBookingEdit';
+import { toast } from 'react-toastify';
 
 const UserBookingHistory = () => {
   const [userBookings, setUserBookings] = useState([]);
@@ -43,7 +44,7 @@ const UserBookingHistory = () => {
         if (result.status === 200) {
           setAllEvents(result.data);
         } else {
-          alert('Failed to fetch Events. Please try again!!!');
+          toast.warning('Failed to fetch Events. Please try again!!!');
         }
       } catch (err) {
         console.log(err);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { registerAPI } from '../Services/allAPI';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const RegisterForm = ({ toggleForm }) => {
@@ -17,12 +18,12 @@ const RegisterForm = ({ toggleForm }) => {
         const result = await registerAPI(userData);
         // console.log(result);
         if(result.status == 200){
-          alert(`Welcome ${userData.username}, Please Login`);
+          toast.success(`Welcome ${userData.username}, Please Login`);
           setUserData({username:"", email:"", password:"", phone:""})
           navigate('/login');
         }else{
           if(result.response.status == 406){
-            alert(result.response.data)
+            toast.info(result.response.data)
             setUserData({username:"", email:"", password:"", phone:""})
           }
         }
@@ -30,7 +31,7 @@ const RegisterForm = ({ toggleForm }) => {
         console.log(err);
       }
     }else{
-      alert('pls fill the form')
+      toast.warning('pls fill the form')
     }
   }
   return (

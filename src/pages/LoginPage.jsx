@@ -2,8 +2,8 @@
 
 import React from 'react';
 import LoginForm from '../components/LoginForm';
-import './LoginPage.css'; // Import your custom styles for the login page
-import LogoHeader from '../components/LogoHeader';
+import './LoginPage.css'; 
+// import LogoHeader from '../components/LogoHeader';
 
 const LoginPage = () => {
     return (

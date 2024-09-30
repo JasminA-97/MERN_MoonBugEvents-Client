@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { bookEventAPI, getFullEventsAPI } from '../Services/allAPI';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 const UserBookEvent = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -35,7 +36,7 @@ const UserBookEvent = () => {
         if (result.status === 200) {
           setAllEvents(result.data);
         } else {
-          alert('Failed to fetch Events. Please try again!!!');
+          toast.info('Failed to fetch Events. Please try again!!!');
         }
       } catch (err) {
         console.log(err);
@@ -59,19 +60,19 @@ const UserBookEvent = () => {
           const result = await bookEventAPI(reqBody, reqHeader);
           console.log('bookevent------', result);
           if (result.status === 200) {
-            alert('Event booked successfully!');
+            toast.success('Event booked successfully!');
             setFormData({ eventId: '', date: '', location: '', requirements: '' });
           } else {
-            alert(result.response.data);
+            toast.info(result.response.data);
           }
         } catch (err) {
           console.log(err);
         }
       } else {
-        alert('No token found. Please log in again.');
+        toast.info('No token found. Please log in again.');
       }
     } else {
-      alert('Please fill all required fields!');
+      toast.info('Please fill all required fields!');
     }
   };
 

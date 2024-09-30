@@ -3,6 +3,7 @@ import { FloatingLabel, Form, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { loginAPI } from '../Services/allAPI';
 import { tokenAuthContext } from '../contexts/AuthContext';
+import { toast } from 'react-toastify';
 
 const LoginForm = ({ toggleForm }) => {
   const navigate = useNavigate();
@@ -40,17 +41,17 @@ const LoginForm = ({ toggleForm }) => {
           }, 2000);
         } else {
           if (result.response && result.response.status === 404) {
-            alert(result.response.data);
+            toast.info(result.response.data);
           }
           setLoading(false);
         }
       } catch (err) {
         console.log(err);
         setLoading(false);
-        alert('An error occurred during login. Please try again.');
+        toast.warning('An error occurred during login. Please try again.');
       }
     } else {
-      alert('Please fill the form completely!');
+      toast.info('Please fill the form completely!');
     }
   };
 

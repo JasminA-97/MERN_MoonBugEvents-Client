@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap';
 import { userEditBookingAPI } from '../Services/allAPI';
+import { toast } from 'react-toastify';
 
 const UserBookingEdit = ({ booking, allEvents, fetchUserBookings }) => {
   const [formData, setFormData] = useState({
@@ -60,7 +61,7 @@ const UserBookingEdit = ({ booking, allEvents, fetchUserBookings }) => {
         }
       }
     } else {
-      alert('Please fill the form completely!');
+      toast.info('Please fill the form completely!');
     }
   };
 
