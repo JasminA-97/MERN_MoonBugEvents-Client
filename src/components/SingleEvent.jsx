@@ -41,7 +41,7 @@ const SingleEvent = () => {
                                     alt={singleEvent?.eventName || 'Event Image'}
                                 />
                             </div>
-                            <div className="col-md-6 mt-5">
+                            <div className="col-md-6 mt-5 pt-5">
                                 <h2 className=" fw-bolder">
                                     {singleEvent?.eventName || 'Event Name'}
                                 </h2>

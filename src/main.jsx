@@ -7,6 +7,7 @@ import './bootstrap.min.css'
 import ContextAPI from './contexts/ContextAPI.jsx'
 import AuthContext from './contexts/AuthContext.jsx'
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

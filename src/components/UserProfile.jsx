@@ -60,7 +60,7 @@ const UserProfile = () => {
           if (result.status === 200) {
             sessionStorage.setItem("user", JSON.stringify(result.data));
             setPhotoAddResponse(result)
-            toast.success("Profile updated successfully!");
+            toast.success('Profile updated successfully!');
           }else{
             console.log(result);
           }
