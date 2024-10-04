@@ -31,7 +31,7 @@ const RegisterForm = ({ toggleForm }) => {
         console.log(err);
       }
     }else{
-      toast.warning('pls fill the form')
+      toast.warning('Please fill the form!')
     }
   }
   return (
